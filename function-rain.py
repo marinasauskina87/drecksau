@@ -17,7 +17,7 @@ def action_rain(dictionary: dict) -> dict:
     """
     for pig_number, status in dictionary.items():
         # Schwein bleibt unverändert, wenn es im Stall ist
-        if 'stall,' in status:
+        if 'stable,' in status:
             continue
         
         # Ansonsten: 'dirty,' -> 'clean,'
