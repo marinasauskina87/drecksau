@@ -7,7 +7,7 @@ def action_rain(dictionary: dict) -> dict:
     ----------
     dictionary : dict
         Ein Wörterbuch, das den Status jedes Schweins enthält.
-        Der Status ist z.B. 'dirty,' oder 'dirty,stall,' etc.
+        Der Status ist z.B. 'dirty,' oder 'dirty,stable,' etc.
 
     Returns
     -------
