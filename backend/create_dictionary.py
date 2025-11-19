@@ -3,8 +3,7 @@ dict_2 = {
     'pig_2': 'clean',
     'pig_3': 'clean',
     'pig_4': 'clean',
-    'pig_5': 'clean',
-    'pig_6': 'clean'
+    'pig_5': 'clean'  
 }
 dict_3 = {
     'pig_1': 'clean',
