@@ -1,19 +1,17 @@
 def action_rain(list_of_dictionaries):
     """
-    Setzt alle Schweine auf „clean“, ausser die, die sich im Stall befinden.
-    Schweine im Stall ('stall,') bleiben in ihrem aktuellen Zustand.
+    Mit der Regenkarte werden alle Schweine wieder sauber, ausser diese sind in einem Stall.
 
     Parameters
     ----------
-    dictionary : dict
-        Ein Wörterbuch, das den Status jedes Schweins enthält.
-        Der Status ist z.B. 'dirty,' oder 'dirty,stable,' etc.
+    list_of_dictionaries : Liste
+        Eine Liste von Dictionaries, jedes Dictionary enthält die "pigs"
 
     Returns
     -------
-    dict
-        Das aktualisierte Wörterbuch, in dem alle nicht-geschützten Schweine
-        als 'clean,' markiert sind.
+    list_of_dictionaries : Liste
+        Die aktualisierte Liste mit Dictionaires nach der Anwendung der Regenkarte.
+
     """
     for dictionary in list_of_dictionaries:
         for pig_number, status in dictionary.items():
