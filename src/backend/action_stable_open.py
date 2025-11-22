@@ -1,4 +1,4 @@
-from action_clean import action_clean
+from backend.action_clean import action_clean
 
 
 def action_stable_open(dictionary: dict, pig_number: str):
