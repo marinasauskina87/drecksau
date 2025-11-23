@@ -2,7 +2,7 @@ import random
 import config
 from tkinter import Frame
 from customtkinter import *
-from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
+from PIL import Image, ImageTk  # Import PIL for PNG support
 
 current_card_deck = config.card_deck
 

@@ -24,7 +24,8 @@ def add_pigs(root_window):
 
     for player in range(config.amount_of_players):
         group_of_pigs = Frame(root_window, bg="#242424", name=f"pigs_player_{player+1}")
-        group_of_pigs.grid(row=config.positions[player][0], column=config.positions[player][1], sticky=config.positions[player][2])
+        group_of_pigs.grid(row=config.positions[player][0], column=config.positions[player][1], sticky=
+        config.positions[player][2])
         
         font = ImageFont.truetype("arial.ttf", 40)
         width, height = 150, 50

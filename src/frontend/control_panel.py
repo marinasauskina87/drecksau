@@ -1,7 +1,4 @@
 from customtkinter import *
-from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
-import random
-from tkinter import Frame
 
 import config
 import manage_pigs
@@ -125,7 +122,7 @@ root = manage_pigs.add_pigs(root)
 setup_command_pigs(root)
 
 # Action cards
-for player in range(1,config.amount_of_players+1):
+for player in range(1, config.amount_of_players + 1):
     manage_action_cards.draw_cards(player, 3, card_dict_players)
 
 manage_action_cards.create_frame(root)

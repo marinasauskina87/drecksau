@@ -1,6 +1,6 @@
 from tkinter import Frame
 from customtkinter import *
-from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
+from PIL import Image, ImageTk  # Import PIL for PNG support
 
 import config
 
@@ -20,20 +20,20 @@ def add_support_card(root_window, player, pig, action_card):
     img_action_card = Image.open(f"images/{action_card}.png")
     # Resize it (make it three times smaller)
     pil_img_action_card = img_action_card.resize((int(img_action_card.width / 3), int(img_action_card.height / 3)), Image.Resampling.LANCZOS)
-    resized_photo_rot = pil_img_action_card.rotate(config.positions[player-1][3], expand=True)
+    resized_photo_rot = pil_img_action_card.rotate(config.positions[player - 1][3], expand=True)
     resized_photo = ImageTk.PhotoImage(resized_photo_rot)
     resized_photo.pil_image = action_card
     
     gustav = CTkLabel(frame_support_cards, text="", bg_color="transparent", image=resized_photo)
-    if (config.positions[player-1][3] % 180 == 0):
+    if (config.positions[player - 1][3] % 180 == 0):
         gustav.grid(column=len(frame_support_cards.winfo_children())-1, row=0)
     else:
         gustav.grid(row=len(frame_support_cards.winfo_children())-1, column=0)
     
-    if (config.positions[player-1][3] % 180 == 0):
-        frame_support_cards.grid(row=0, column=pig-1, sticky=config.positions[player-1][2]) 
+    if (config.positions[player - 1][3] % 180 == 0):
+        frame_support_cards.grid(row=0, column=pig-1, sticky=config.positions[player - 1][2])
     else:
-        frame_support_cards.grid(row=pig-1, column=0, sticky=config.positions[player-1][2])
+        frame_support_cards.grid(row=pig-1, column=0, sticky=config.positions[player - 1][2])
 
 def remove_support_card(root_window, player, pig, action_card):
     """
