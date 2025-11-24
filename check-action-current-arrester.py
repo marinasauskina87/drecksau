@@ -1,4 +1,4 @@
-def check_current_arrester(dictionary: dict, pig_number:str) -> bool:
+def check_current_arrester(dictionary: dict, pig_number:str) -> int:
     """
     Prüft, ob eine 'current_arrester'-Karte auf das angegebene Schwein
     gelegt werden darf.
@@ -19,7 +19,7 @@ def check_current_arrester(dictionary: dict, pig_number:str) -> bool:
 
     Returns
     -------
-    bool
+    int
         0 : Die Karte darf gelegt werden.
         1 : Die Karte soll nicht gelegt werden ( weil ein 'current_arrester' existiert).
         -1 : Die Karte darf nicht gelegt werden, da kein Stall vorhanden
