@@ -1,6 +1,6 @@
 from tkinter import Frame
 from customtkinter import *
-from PIL import Image, ImageTk  # Import PIL for PNG support
+from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
 
 import frontend.config as config
 
@@ -28,35 +28,19 @@ def add_support_card(root_window, player, pig, action_card):
     img_action_card = Image.open(f"frontend/images/{action_card}.png")
     # Resize it (make it three times smaller)
     pil_img_action_card = img_action_card.resize((int(img_action_card.width / 3), int(img_action_card.height / 3)), Image.Resampling.LANCZOS)
-<<<<<<< Updated upstream:src/frontend/manage_support_cards.py
-    resized_photo_rot = pil_img_action_card.rotate(config.positions[player - 1][3], expand=True)
-=======
     # Rotate it
     resized_photo_rot = pil_img_action_card.rotate(positions[player-1][3], expand=True)
->>>>>>> Stashed changes:frontend/manage_support_cards.py
     resized_photo = ImageTk.PhotoImage(resized_photo_rot)
     # For later referencing
     resized_photo.pil_image = action_card
     
-<<<<<<< Updated upstream:src/frontend/manage_support_cards.py
-    gustav = CTkLabel(frame_support_cards, text="", bg_color="transparent", image=resized_photo)
-    if (config.positions[player - 1][3] % 180 == 0):
-        gustav.grid(column=len(frame_support_cards.winfo_children())-1, row=0)
-=======
     lbl_support_card = CTkLabel(frame_support_cards, text="", bg_color="transparent", image=resized_photo)
     # If the player is either on top (P.2/3) or on the bottom (P.1)
     if (positions[player-1][3] % 180 == 0):
         lbl_support_card.grid(column=len(frame_support_cards.winfo_children())-1, row=0)
->>>>>>> Stashed changes:frontend/manage_support_cards.py
     else:
         lbl_support_card.grid(row=len(frame_support_cards.winfo_children())-1, column=0)
     
-<<<<<<< Updated upstream:src/frontend/manage_support_cards.py
-    if (config.positions[player - 1][3] % 180 == 0):
-        frame_support_cards.grid(row=0, column=pig-1, sticky=config.positions[player - 1][2])
-    else:
-        frame_support_cards.grid(row=pig-1, column=0, sticky=config.positions[player - 1][2])
-=======
     if (positions[player-1][3] % 180 == 0):
         frame_support_cards.grid(row=0, column=pig-1, sticky=positions[player-1][2]) 
     else:
@@ -74,7 +58,6 @@ def get_support_cards(root_window, player, pig):
                 list_of_support_cards.append(support_card.cget("image").pil_image)
     return list_of_support_cards
 
->>>>>>> Stashed changes:frontend/manage_support_cards.py
 
 def remove_support_card(root_window, player, pig, action_card):
     """

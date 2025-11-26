@@ -9,7 +9,7 @@ card_deck = [["Matschkarte", 21], #21
              ["Blitzableiterkarte", 4], #4
              ["Bauer-schrubbt-die-Sau-Karte", 8], #8
              ["Bauer-ärgere-dich-Karte", 4], #4
-             ["Tornadokarte", 2]] #2
+             ["Tornadokarte", 14]] #2
 
 amount_of_players = 4
 

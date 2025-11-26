@@ -1,7 +1,7 @@
 import random
 from tkinter import Frame
 from customtkinter import *
-from PIL import Image, ImageTk  # Import PIL for PNG support
+from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
 
 import frontend.config as config
 
