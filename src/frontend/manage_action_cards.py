@@ -52,6 +52,10 @@ def show_action_cards(root_window, card_dict_players, current_player):
     frame_action_cards = root_window.nametowidget(f".action_cards")
     frame_action_cards.configure(bg="#DDDDDD")
     
+    # Label for player
+    player_label_action_card = CTkLabel(frame_action_cards, text=f"It is your turn: Player {current_player}", font=("Arial", 20), text_color="black")
+    player_label_action_card.grid(columnspan=3, row=0)
+
     # Load new cards
     for index, action_card in enumerate(card_dict_players[f"player-{current_player}"]):
         img_action_card = Image.open(f"frontend/images/{action_card}.png")
@@ -63,7 +67,23 @@ def show_action_cards(root_window, card_dict_players, current_player):
         btn_action_card = CTkButton(frame_action_cards, text="", image=tk_img_action_card, fg_color="#DDDDDD")
         btn_action_card.flag = "Inactive"
         btn_action_card.grid(column=index, row=1)
+    
+    # Button for wasting cards
+    btn_waste_card = CTkButton(frame_action_cards, text="Waste selected action_card")
+    btn_waste_card.flag = "waste_btn"
+    btn_waste_card.grid(row=2, columnspan=3, sticky="ew")
+    # Saves position of button
+    btn_waste_card.grid_remove()
 
-    # Label for player
-    player_label_action_card = CTkLabel(frame_action_cards, text=f"It is your turn: Player {current_player}", font=("Arial", 20), text_color="black")
-    player_label_action_card.grid(columnspan=3, row=0)
+def is_waste_button_visible(frame_waste_button, is_visible):
+    for widget in frame_waste_button.winfo_children():
+        if widget.__class__.__name__ == "CTkButton":
+            if widget.flag == "waste_btn":
+                if is_visible:
+                    widget.grid()
+                else:
+                    widget.grid_remove()
+                break
+    
+
+
