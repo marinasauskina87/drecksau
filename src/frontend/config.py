@@ -9,7 +9,7 @@ card_deck = [["Matschkarte", 21], #21
              ["Blitzableiterkarte", 4], #4
              ["Bauer-schrubbt-die-Sau-Karte", 8], #8
              ["Bauer-ärgere-dich-Karte", 4], #4
-             ["Tornadokarte", 14]] #2
+             ["Tornadokarte", 2]] #2
 
 amount_of_players = 4
 
@@ -17,6 +17,12 @@ pigs_per_player = {
     2: 5,
     3: 4,
     4: 3
+}
+
+state_to_card = {
+    "stable": "Stallkarte",
+    "locked": "Bauer-ärgere-dich-Karte",
+    "current_arrester": "Blitzableiterkarte"
 }
 
 status_cards = ["Matschkarte"]
