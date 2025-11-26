@@ -20,6 +20,6 @@ def action_current_arrester(dictionary: dict, pig_number: str) -> dict:
     status = dictionary[pig_number]
 
     # current_arrester hinzufügen
-    dictionary[pig_number] = status + "current_arrester,"
+    dictionary[pig_number] = status + "current_arrester"
 
     return dictionary
