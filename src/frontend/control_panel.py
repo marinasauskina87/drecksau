@@ -61,6 +61,8 @@ def parse_widget_to_pig_location(widget):
     """
     Helper function to receive the player-number and the pig-number of the selected pigs
     more gently 
+    Helper function to receive the player-number and the pig-number of the selected pigs
+    more gently 
     """
     return_values = {
         "player_number": 0,
@@ -70,6 +72,7 @@ def parse_widget_to_pig_location(widget):
         if "pigs_player" in part_of_name:
             return_values["player_number"] = part_of_name[-1]
         elif "ctkbutton" in part_of_name:
+            return_values["pig_number"] = widget.flag
             return_values["pig_number"] = widget.flag
     return return_values
 
@@ -81,6 +84,8 @@ def setup_command_pigs(root_window):
         for pig in pigs.winfo_children():
             # As we just want to tackle the buttons and not the label "Player X"
             # Second test is for the button "Waste card"
+            # As we just want to tackle the buttons and not the label "Player X"
+            # Second test is for the button "Waste card"
             if (pig.__class__.__name__ == "CTkButton"):
                 pig.configure(command=lambda button=pig: trigger_action(button))
 
@@ -89,6 +94,24 @@ def setup_command_action_card(root_window):
     # be initialised as it is in another module. Therefore, it is done here
     action_cards = root_window.nametowidget(f"action_cards")
     for action_card in action_cards.winfo_children():
+        # As we just want to tackle the buttons and not the label "It's your turn..."
+        if (action_card.__class__.__name__ == "CTkButton"):
+            if (hasattr(action_card.cget("image"), "pil_image")):
+                action_card.configure(command=lambda button=action_card: handle_action_card_selection(button))
+            else:
+                action_card.configure(command=lambda button=action_card: waste_action_card(root_window))
+
+def handle_played_action_card(current_player, played_card, card_dict_players):
+    # Remove the played card
+    for index, card in enumerate(card_dict_players[f"player-{current_player}"]):
+        if card == played_card:
+            card_dict_players[f"player-{current_player}"].pop(index)
+            break
+    
+    # Draw a card
+    new_card = manage_action_cards.choose_random_card()
+    card_dict_players[f"player-{current_player}"].append(new_card[0])
+    return card_dict_players
         # As we just want to tackle the buttons and not the label "It's your turn..."
         if (action_card.__class__.__name__ == "CTkButton"):
             if (hasattr(action_card.cget("image"), "pil_image")):
@@ -128,6 +151,11 @@ def trigger_action(clicked_btn):
             selected_pig_str = f"pig_{selected_pig}"
             selected_player = selected_entity["player_number"]
             selected_action_card = action_card.cget("image").pil_image.split('.')[0]
+            selected_player_dict = globals()[f"dict_player_pigs_{selected_player}"]
+
+            handle_played_action_card(current_player, selected_action_card, card_dict_players)
+
+            # If a status card has been played:
             selected_player_dict = globals()[f"dict_player_pigs_{selected_player}"]
 
             handle_played_action_card(current_player, selected_action_card, card_dict_players)
@@ -262,9 +290,16 @@ def waste_action_card(root_window):
     # Standard configuration after move
     current_player = config.configure_current_player(current_player)
     change_state_player_pigs(root, "disabled")
+    change_state_player_pigs(root, "disabled")
     manage_action_cards.show_action_cards(root, card_dict_players, current_player)
     setup_command_action_card(root)
 
+    # For showing waste-card-button
+    manage_action_cards.is_waste_button_visible(frame_action_cards, False)
+
+
+def change_state_player_pigs(root_window, new_state):
+    # Make the pigs of all players clickable (only available after an action card has been chosen)
     # For showing waste-card-button
     manage_action_cards.is_waste_button_visible(frame_action_cards, False)
 
@@ -277,8 +312,11 @@ def change_state_player_pigs(root_window, new_state):
             # Don't select the potential support-cards of the pig
             if not widget.__class__.__name__ == "Frame":
                 widget.configure(state=new_state)
+                widget.configure(state=new_state)
 
 # -------------------------------------------------------------------------------
+
+## Basic configuration
 
 ## Basic configuration
 current_player = 1
@@ -290,9 +328,13 @@ card_dict_players = config.configure_player_card_dictionary(config.amount_of_pla
 root = config.configure_board()
 
 # Pigs preparation
+# Pigs preparation
 root = manage_pigs.add_pigs(root)
 setup_command_pigs(root)
 
+# Action cards preparation
+for player in range(1,config.amount_of_players+1):
+    globals()[f"dict_player_pigs_{player}"] = create_dictionary(config.amount_of_players).copy()
 # Action cards preparation
 for player in range(1,config.amount_of_players+1):
     globals()[f"dict_player_pigs_{player}"] = create_dictionary(config.amount_of_players).copy()
