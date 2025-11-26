@@ -1,4 +1,5 @@
 from customtkinter import *
+from CTkMessagebox import CTkMessagebox
 from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
 import random
 from tkinter import Frame
@@ -19,8 +20,15 @@ from backend.action_stable_locked import action_stable_locked
 from backend.function_current_arrester import action_current_arrester
 from backend.action_tornado import action_tornado
 
+from logik.check_action_current_arrester import check_current_arrester
+from logik.check_action_flash import check_action_flash
+from logik.check_action_locked import check_action_locked
+from logik.check_action_open import check_action_open
+from logik.check_action_stable import check_action_stable
+from logik.check_function_dirty import check_action_dirty
+
 def update_UI(root_window, player_number, pig_number, player_dict):
-    pigs = root_window.nametowidget(f".pigs_player_{int(player_number)}")
+    pigs = root_window.nametowidget(f"pigs_player_{int(player_number)}")
     chosen_pig = pigs.winfo_children()[int(pig_number)-1]
     states = player_dict[f'pig_{pig_number}']
     support_cards_of_pig = manage_support_cards.get_support_cards(root_window, player_number, pig_number)
@@ -69,7 +77,7 @@ def setup_command_pigs(root_window):
     # During pig-button initialisation, the command-function (executed when clicked) couldn't
     # be initialised as it is in another module. Therefore, it is done here
     for player in range(1, config.amount_of_players+1):
-        pigs = root_window.nametowidget(f".pigs_player_{player}")
+        pigs = root_window.nametowidget(f"pigs_player_{player}")
         for pig in pigs.winfo_children():
             # As we just want to tackle the buttons and not the label "Player X"
             # Second test is for the button "Waste card"
@@ -79,7 +87,7 @@ def setup_command_pigs(root_window):
 def setup_command_action_card(root_window):
     # During action-card-button initialisation, the command-function (executed when clicked) couldn't
     # be initialised as it is in another module. Therefore, it is done here
-    action_cards = root_window.nametowidget(f".action_cards")
+    action_cards = root_window.nametowidget(f"action_cards")
     for action_card in action_cards.winfo_children():
         # As we just want to tackle the buttons and not the label "It's your turn..."
         if (action_card.__class__.__name__ == "CTkButton"):
@@ -105,7 +113,7 @@ def trigger_action(clicked_btn):
     global current_player
 
     # Get the selected action_card
-    action_card_frame = root.nametowidget(f".action_cards")
+    action_card_frame = root.nametowidget(f"action_cards")
     correct_move = True
 
     # For showing waste-card-button
@@ -117,6 +125,7 @@ def trigger_action(clicked_btn):
             # Define entities
             selected_entity = parse_widget_to_pig_location(clicked_btn)
             selected_pig = selected_entity["pig_number"]
+            selected_pig_str = f"pig_{selected_pig}"
             selected_player = selected_entity["player_number"]
             selected_action_card = action_card.cget("image").pil_image.split('.')[0]
             selected_player_dict = globals()[f"dict_player_pigs_{selected_player}"]
@@ -126,7 +135,13 @@ def trigger_action(clicked_btn):
             # If a status card has been played:
             if (selected_action_card in config.status_cards):
                 if (str(current_player) == selected_player):
-                    selected_player_dict = action_dirty(selected_player_dict, f"pig_{selected_pig}")
+                    if check_action_dirty(selected_player_dict, selected_pig_str) == 0:
+                        selected_player_dict = action_dirty(selected_player_dict, selected_pig_str)
+                        msg_dreckssau = CTkMessagebox(title="DRECKSSAU! :D", message="DRECKSSAU! :D", icon="warning")
+                        msg_dreckssau.after(1000, msg_dreckssau.destroy)
+                    else:
+                        correct_move=False
+                        print("ACTION DIRTY FAILED")
                 else:
                     correct_move=False
                     print("YOU MAY NOT DIRTY SOMEONE ELSE")
@@ -134,9 +149,19 @@ def trigger_action(clicked_btn):
             elif (selected_action_card in config.actional_cards):
                 if not (str(current_player) == selected_player):
                     if (selected_action_card == "Blitzkarte"):
-                        selected_player_dict = action_flash(selected_player_dict, f"pig_{selected_pig}")
+                        if check_action_flash(selected_player_dict, selected_pig_str) == 0:
+                            selected_player_dict = action_flash(selected_player_dict, selected_pig_str)
+                        else:
+                            correct_move=False
+                            print("ACTION FLASH FAILED")
                     elif (selected_action_card == "Bauer-schrubbt-die-Sau-Karte"):
-                        selected_player_dict = action_stable_open(selected_player_dict, f"pig_{selected_pig}")
+                        if check_action_open(selected_player_dict, selected_pig_str) == 0:
+                            selected_player_dict = action_stable_open(selected_player_dict, selected_pig_str)
+                            msg_dreckssau = CTkMessagebox(title="ICH PUTZ DICH! :D", message="ICH PUTZ DICH! :D", icon="warning")
+                            msg_dreckssau.after(1000, msg_dreckssau.destroy)
+                        else:
+                            correct_move=False
+                            print("ACTION BAUER SCHRUBBT DIE SAU FAILED")
                     else:
                         print(f"Card not found {selected_action_card}")
                 else:
@@ -146,11 +171,25 @@ def trigger_action(clicked_btn):
             elif (selected_action_card in config.support_cards):
                 if (str(current_player) == selected_player):
                     if (selected_action_card == "Stallkarte"):
-                        selected_player_dict = action_stable(selected_player_dict, f"pig_{selected_pig}")
+                        if check_action_stable(selected_player_dict, selected_pig_str) == 0:
+                            selected_player_dict = action_stable(selected_player_dict, selected_pig_str)
+                        else:
+                            correct_move=False
+                            print("ACTION STABLE FAILED")
                     elif selected_action_card == "Blitzableiterkarte":
-                        selected_player_dict = action_current_arrester(selected_player_dict, f"pig_{selected_pig}")
+                        if check_current_arrester(selected_player_dict, selected_pig_str) == 0:
+                            selected_player_dict = action_current_arrester(selected_player_dict, selected_pig_str)
+                        else:
+                            correct_move=False
+                            print("ACTION ARRESTER FAILED")
                     elif selected_action_card == "Bauer-ärgere-dich-Karte":
-                        selected_player_dict = action_stable_locked(selected_player_dict, f"pig_{selected_pig}")
+                        if check_action_locked(selected_player_dict, selected_pig_str) == 0:
+                            selected_player_dict = action_stable_locked(selected_player_dict, selected_pig_str)
+                        else:
+                            correct_move=False
+                            print("ACTION BAUER AERGERE DICH FAILED")
+                    else:
+                        print("This action is not possible")
                 else:
                     correct_move=False
                     print("WHY DO YOU HELP THE OTHERS? ITS A GAME")
@@ -214,7 +253,7 @@ def handle_action_card_selection(clicked_action_card):
 def waste_action_card(root_window):
     global current_player
 
-    frame_action_cards = root_window.nametowidget(f".action_cards")
+    frame_action_cards = root_window.nametowidget(f"action_cards")
     for widget in frame_action_cards.winfo_children():
         if widget.__class__.__name__ == "CTkButton":
             if widget.flag == "Selected":
@@ -233,7 +272,7 @@ def waste_action_card(root_window):
 def change_state_player_pigs(root_window, new_state):
     # Make the pigs of all players clickable (only available after an action card has been chosen)
     for player in range(config.amount_of_players):
-        frame_player_pigs = root_window.nametowidget(f".pigs_player_{player+1}")
+        frame_player_pigs = root_window.nametowidget(f"pigs_player_{player+1}")
         for widget in frame_player_pigs.winfo_children():
             # Don't select the potential support-cards of the pig
             if not widget.__class__.__name__ == "Frame":
@@ -243,6 +282,9 @@ def change_state_player_pigs(root_window, new_state):
 
 ## Basic configuration
 current_player = 1
+
+config.pop_up_amount_of_player()
+
 card_dict_players = config.configure_player_card_dictionary(config.amount_of_players)
 
 root = config.configure_board()

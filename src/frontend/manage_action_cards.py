@@ -49,7 +49,7 @@ def clear_action_cards(action_card_frame):
         widget.destroy()
 
 def show_action_cards(root_window, card_dict_players, current_player):
-    frame_action_cards = root_window.nametowidget(f".action_cards")
+    frame_action_cards = root_window.nametowidget(f"action_cards")
     frame_action_cards.configure(bg="#DDDDDD")
     
     # Label for player

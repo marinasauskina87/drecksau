@@ -1,4 +1,5 @@
 from customtkinter import *
+from CTkMessagebox import CTkMessagebox
 from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
 
 # Hard-Coded config variables
@@ -29,9 +30,14 @@ status_cards = ["Matschkarte"]
 actional_cards = ["Blitzkarte", "Bauer-schrubbt-die-Sau-Karte"]
 support_cards = ["Stallkarte", "Blitzableiterkarte", "Bauer-ärgere-dich-Karte"]
 
+def pop_up_amount_of_player():
+    global amount_of_players
+    msg_amount_players = CTkMessagebox(title="Welcome! :D", message="With how many players do you want to play?", icon="question", option_1="2", option_2="3", option_3="4")
+    amount_of_players = int(msg_amount_players.get())
+
 def configure_board():
     # Will represent the main window
-    root = CTk()
+    root = CTkToplevel()
 
     # Fullscreen
     width = root.winfo_screenwidth()               
@@ -57,9 +63,8 @@ def configure_board():
     background_img = Image.open("frontend/images/Hintergrund.jpg")
     background_img = background_img.resize((root.winfo_width(), root.winfo_height()))
     photo_background_img = ImageTk.PhotoImage(background_img)
-
     lbl_background_img = CTkLabel(root, image=photo_background_img, text="")
-    # Set the background image over the whole window
+
     lbl_background_img.grid(row=0, column=0, rowspan=5, columnspan=5)
 
     return root
