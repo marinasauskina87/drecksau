@@ -3,15 +3,12 @@ from CTkMessagebox import CTkMessagebox
 from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
 
 # Hard-Coded config variables
-# Hard-Coded config variables
 card_deck = [["Matschkarte", 21], #21
              ["Regenkarte", 4], #4
              ["Stallkarte", 9], #9
              ["Blitzkarte", 4], #4
              ["Blitzableiterkarte", 4], #4
              ["Bauer-schrubbt-die-Sau-Karte", 8], #8
-             ["Bauer-ärgere-dich-Karte", 4], #4
-             ["Tornadokarte", 2]] #2
              ["Bauer-ärgere-dich-Karte", 4], #4
              ["Tornadokarte", 2]] #2
 
@@ -27,20 +24,9 @@ state_to_card = {
     "stable": "Stallkarte",
     "locked": "Bauer-ärgere-dich-Karte",
     "current_arrester": "Blitzableiterkarte"
-pigs_per_player = {
-    2: 5,
-    3: 4,
-    4: 3
-}
-
-state_to_card = {
-    "stable": "Stallkarte",
-    "locked": "Bauer-ärgere-dich-Karte",
-    "current_arrester": "Blitzableiterkarte"
 }
 
 status_cards = ["Matschkarte"]
-actional_cards = ["Blitzkarte", "Bauer-schrubbt-die-Sau-Karte"]
 actional_cards = ["Blitzkarte", "Bauer-schrubbt-die-Sau-Karte"]
 support_cards = ["Stallkarte", "Blitzableiterkarte", "Bauer-ärgere-dich-Karte"]
 
@@ -55,7 +41,6 @@ def configure_board():
 
     # Fullscreen
     width = root.winfo_screenwidth()               
-    height = root.winfo_screenheight()            
     height = root.winfo_screenheight()            
     root.geometry(f"{width}x{height}")
     
@@ -78,14 +63,14 @@ def configure_board():
     background_img = Image.open("frontend/images/Hintergrund.jpg")
     background_img = background_img.resize((root.winfo_width(), root.winfo_height()))
     photo_background_img = ImageTk.PhotoImage(background_img)
-    lbl_background_img = CTkLabel(root, image=photo_background_img, text="")
 
+    lbl_background_img = CTkLabel(root, image=photo_background_img, text="")
+    # Set the background image over the whole window
     lbl_background_img.grid(row=0, column=0, rowspan=5, columnspan=5)
 
     return root
 
 def configure_player_card_dictionary(amount_of_players):
-    # Create one dictionary which has the player-name as key and player-cards as value (in list)
     # Create one dictionary which has the player-name as key and player-cards as value (in list)
     player_card_dict = {}
     for player in range(amount_of_players):
@@ -98,24 +83,6 @@ def configure_current_player(current_player):
         return (current_player % amount_of_players)
     else:
         return current_player
-
-def get_positions(amount_of_players):
-    positions = {}
-    if amount_of_players == 2:
-        # positions = [row, column, sticky, rotation]
-        positions = {
-            0: [3, 2, "s", 0], # down (player 1)
-            1: [1, 2, "n", 180], # top (player 2/3)
-        }
-    else:
-        # positions = [row, column, sticky, rotation]
-        positions = {
-            0: [3, 2, "s", 0], # down (player 1)
-            1: [2, 1, "w", -90], # left (player 2/3)
-            2: [1, 2, "n", 180], # top (player 2/3)
-            3: [2, 3, "e", 90]  # right (player 4)
-        }
-    return positions
 
 def get_positions(amount_of_players):
     positions = {}
