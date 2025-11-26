@@ -1,4 +1,7 @@
 from customtkinter import *
+from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
+import random
+from tkinter import Frame
 
 import frontend.config as config
 import frontend.manage_pigs as manage_pigs
@@ -6,7 +9,7 @@ import frontend.manage_action_cards as manage_action_cards
 import frontend.manage_support_cards as manage_support_cards
 
 from backend.action_clean import action_clean
-from backend.function_rain import action_rain
+from backend.funktion_rain import action_rain
 from backend.create_dictionary import create_dictionary
 from backend.action_stable_open import action_stable_open
 from backend.action_flash import action_flash
@@ -14,7 +17,6 @@ from backend.function_dirty import action_dirty
 from backend.function_stable import action_stable
 from backend.action_stable_locked import action_stable_locked
 from backend.function_current_arrester import action_current_arrester
-from backend.function_rain import action_rain
 from backend.action_tornado import action_tornado
 
 def update_UI(root_window, player_number, pig_number, player_dict):
@@ -72,6 +74,7 @@ def handle_played_action_card(current_player, played_card, card_dict_players):
     for index, card in enumerate(card_dict_players[f"player-{current_player}"]):
         if card == played_card:
             card_dict_players[f"player-{current_player}"].pop(index)
+            break
     
     # Draw a card
     new_card = manage_action_cards.choose_random_card()
@@ -104,7 +107,7 @@ def trigger_action(clicked_btn):
                 if (selected_action_card == "Blitzkarte"):
                     selected_player_dict = action_flash(selected_player_dict, f"pig_{selected_pig}")
                 elif (selected_action_card == "Bauer-schrubbt-die-Sau-Karte"):
-                    selected_player_dict = action_stable_open(selected_player_dict, selected_pig)
+                    selected_player_dict = action_stable_open(selected_player_dict, f"pig_{selected_pig}")
                 else:
                     print(f"Card not found {selected_action_card}")
             # If a support card has been played:
@@ -126,6 +129,8 @@ def trigger_action(clicked_btn):
     setup_command_action_card(root)
 
 def handle_action_card_selection(clicked_action_card):
+    global current_player
+
     selected_action_card = clicked_action_card.cget("image").pil_image.split('.')[0]
     # Spread moves don't need a specific pig selection
     if (selected_action_card == "Regenkarte") or (selected_action_card == "Tornadokarte"):
@@ -144,14 +149,16 @@ def handle_action_card_selection(clicked_action_card):
             for pig in range(1, config.pigs_per_player[config.amount_of_players]+1):
                 update_UI(root, player, pig, globals()[f"dict_player_pigs_{player}"])
 
-        # Standard configuration after move
-        change_state_player_pigs(root, "disabled")
-        manage_action_cards.show_action_cards(root, card_dict_players, config.configure_current_player(current_player))
-        setup_command_action_card(root)
         if (selected_action_card == "Regenkarte"):
             handle_played_action_card(current_player, "Regenkarte", card_dict_players)
         else:
             handle_played_action_card(current_player, "Tornadokarte", card_dict_players)
+        
+        # Standard configuration after move
+        current_player = config.configure_current_player(current_player)
+        change_state_player_pigs(root, "disabled")
+        manage_action_cards.show_action_cards(root, card_dict_players, current_player)
+        setup_command_action_card(root)
     # If no spread-move has been played
     else:
         # The player should only select pigs if he has selected an action-card
@@ -184,14 +191,9 @@ root = config.configure_board()
 root = manage_pigs.add_pigs(root)
 setup_command_pigs(root)
 
-<<<<<<< Updated upstream:src/frontend/control_panel.py
-# Action cards
-for player in range(1, config.amount_of_players + 1):
-=======
 # Action cards preparation
 for player in range(1,config.amount_of_players+1):
     globals()[f"dict_player_pigs_{player}"] = create_dictionary(config.amount_of_players).copy()
->>>>>>> Stashed changes:frontend/control_panel.py
     manage_action_cards.draw_cards(player, 3, card_dict_players)
 manage_action_cards.create_frame(root)
 manage_action_cards.show_action_cards(root, card_dict_players, current_player)

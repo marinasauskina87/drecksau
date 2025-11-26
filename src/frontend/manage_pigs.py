@@ -22,40 +22,8 @@ def add_pigs(root_window):
     background_color_pigs = "violet"
 
     for player in range(config.amount_of_players):
-<<<<<<< Updated upstream:src/frontend/manage_pigs.py
-        group_of_pigs = Frame(root_window, bg="#242424", name=f"pigs_player_{player+1}")
-        group_of_pigs.grid(row=config.positions[player][0], column=config.positions[player][1], sticky=
-        config.positions[player][2])
-        
-        font = ImageFont.truetype("arial.ttf", 40)
-        width, height = 150, 50
-
-        img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(img)
-        draw.text((0, 0), f"Player {player+1}", fill="white", font=font)
-        if config.positions[player][2] == "s":
-            tk_img = ImageTk.PhotoImage(img)
-            lbl = CTkLabel(root_window, image=tk_img, text="")
-            lbl.grid(row=4, column=2, sticky="new")
-        elif config.positions[player][2] == "n":
-            tk_img = ImageTk.PhotoImage(img)
-            lbl = CTkLabel(root_window, image=tk_img, text="")
-            lbl.grid(row=0, column=2, sticky="s")
-        elif config.positions[player][2] == "w":
-            print("hi")
-            img = img.rotate(270, expand=True)
-            tk_img = ImageTk.PhotoImage(img)
-            lbl = CTkLabel(root_window, image=tk_img, text="")
-            lbl.grid(row=2, column=0, sticky="nse")
-        else:
-            img = img.rotate(90, expand=True)
-            tk_img = ImageTk.PhotoImage(img)
-            lbl = CTkLabel(root_window, image=tk_img, text="")
-            lbl.grid(row=2, column=4, sticky="nsw")
-=======
         group_of_pigs = Frame(root_window, bg=background_color_pigs, name=f"pigs_player_{player+1}")
         group_of_pigs.grid(row=positions[player][0], column=positions[player][1], sticky=positions[player][2])
->>>>>>> Stashed changes:frontend/manage_pigs.py
 
         for pig in range(amount_of_pigs):
             btn_pig = CTkButton(group_of_pigs, text="", image=prepare_pig_image(player, "Sauberschwein"), fg_color="transparent", width=0, state="disabled")
