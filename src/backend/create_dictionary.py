@@ -1,26 +1,26 @@
 dict_2 = {
-    'pig_1': 'clean',
-    'pig_2': 'clean',
-    'pig_3': 'clean',
-    'pig_4': 'clean',
-    'pig_5': 'clean'  
+    'pig_1': 'clean,',
+    'pig_2': 'clean,',
+    'pig_3': 'clean,',
+    'pig_4': 'clean,',
+    'pig_5': 'clean,'
 }
 dict_3 = {
-    'pig_1': 'clean',
-    'pig_2': 'clean',
-    'pig_3': 'clean',
-    'pig_4': 'clean'
+    'pig_1': 'clean,',
+    'pig_2': 'clean,',
+    'pig_3': 'clean,',
+    'pig_4': 'clean,'
 }
 dict_4 = {
-    'pig_1': 'clean',
-    'pig_2': 'clean',
-    'pig_3': 'clean'
+    'pig_1': 'clean,',
+    'pig_2': 'clean,',
+    'pig_3': 'clean,'
 }
 dict_test = {
-    'pig_1': 'clean',
+    'pig_1': 'clean,',
     'pig_2': 'dirty,',
     'pig_3': 'dirty, stable, ',
-    'pig_4': 'dirty, stable, locked, arrester '
+    'pig_4': 'dirty, stable, locked, current_arrester '
 }
 
 def create_dictionary(number):
