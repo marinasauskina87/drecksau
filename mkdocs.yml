@@ -1,0 +1,14 @@
+site_name: MI25a-PM1-HS25-G3-P3 Doku
+theme:
+  name: material
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+
+nav:
+  - Start: index.md
+  - API: api.md
