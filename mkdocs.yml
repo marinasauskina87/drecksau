@@ -1,14 +1,19 @@
-site_name: MI25a-PM1-HS25-G3-P3 Doku
+site_name: Projekt 3 "Dreckssau"
+
 theme:
   name: material
 
 plugins:
+  - search
   - mkdocstrings:
       handlers:
         python:
+          paths:
+            - src
           options:
             docstring_style: google
+            show_source: true
 
 nav:
   - Start: index.md
-  - API: api.md
+  - Funktionen: funktionen.md
