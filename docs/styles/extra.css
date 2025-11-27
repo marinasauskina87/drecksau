@@ -1,0 +1,150 @@
+/* ------------------- Farb-Definitionen (Drecksau Theme) ------------------- */
+:root {
+    /* Hauptfarben aus dem Bild extrahiert */
+    --drecksau-blue: #4aa3df;   /* Der Himmel */
+    --drecksau-brown: #5D4037;  /* Der Matsch (Dunkel) */
+    --drecksau-mud: #8D6E63;    /* Der Matsch (Hell) */
+    --drecksau-orange: #FF9800; /* Das Logo Orange */
+    --drecksau-pink: #F48FB1;   /* Das Schweinchen */
+    --drecksau-green: #8BC34A;  /* Die Wiese */
+    --drecksau-bg: #FFF8E1;     /* Sehr helles Beige (Papier) für guten Kontrast */
+
+    /* MkDocs Material Variablen überschreiben */
+    --md-primary-fg-color:        var(--drecksau-blue);
+    --md-primary-fg-color--light: var(--drecksau-blue);
+    --md-primary-fg-color--dark:  #368ecf;
+    --md-primary-bg-color:        #ffffff;
+
+    --md-accent-fg-color:         var(--drecksau-orange);
+
+    /* Text Farbe: Ein sehr dunkles Braun ist angenehmer als reines Schwarz */
+    --md-text-color:              #3E2723;
+    --md-code-bg-color:           #efebe9; /* Leichtes Braun-Grau für Code */
+}
+
+/* ------------------- Globales Layout & Hintergrund ------------------- */
+
+/* Der Hintergrund der Seite */
+.md-main__inner {
+    /* Optional: Ein leichter Verlauf, der an Himmel und Wiese erinnert */
+    background: linear-gradient(to bottom, #ffffff 0%, var(--drecksau-bg) 100%);
+}
+
+/* Alles etwas runder machen (Cartoon-Look) */
+.md-grid {
+    max-width: 1200px;
+}
+
+/* ------------------- Typografie ------------------- */
+
+/* Überschriften im "Drecksau"-Logo Stil */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', sans-serif !important;
+    color: var(--drecksau-brown);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5em;
+    /* Leichter oranger Schatten für den 3D-Effekt wie auf der Box */
+    text-shadow: 2px 2px 0px rgba(255, 152, 0, 0.3);
+}
+
+/* ------------------- Header & Navigation ------------------- */
+
+.md-header {
+    background-color: var(--drecksau-blue);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Tabs Navigation (falls aktiviert) */
+.md-tabs {
+    background-color: var(--drecksau-blue);
+}
+
+.md-tabs__link {
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Sidebar Styling */
+.md-sidebar {
+    background-color: transparent;
+}
+
+.md-nav__link--active {
+    color: var(--drecksau-orange) !important;
+    font-weight: bold;
+}
+
+/* ------------------- Links & Buttons ------------------- */
+
+a {
+    color: var(--drecksau-orange);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--drecksau-brown);
+    text-decoration: underline;
+}
+
+.md-button {
+    background-color: var(--drecksau-orange);
+    color: white !important;
+    border-radius: 20px; /* Schön rund */
+    font-family: 'Fredoka', sans-serif;
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
+
+.md-button:hover {
+    background-color: var(--drecksau-brown);
+    transform: scale(1.05); /* Button "hüpft" leicht beim Hover */
+}
+
+.md-button--primary {
+    background-color: var(--drecksau-green); /* Primäre Buttons in Grün (Wiese) */
+}
+
+/* ------------------- Admonitions (Hinweisboxen) ------------------- */
+
+/* Das Standard-Design etwas aufpeppen */
+.admonition {
+    border-radius: 12px;
+    border-left-width: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.admonition-title {
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Spezifische Farben für Warnungen etc. anpassen */
+.admonition.note, .admonition.info {
+    border-color: var(--drecksau-blue);
+}
+
+.admonition.warning, .admonition.danger {
+    border-color: var(--drecksau-orange);
+}
+
+.admonition.success {
+    border-color: var(--drecksau-green);
+}
+
+/* ------------------- Codeblöcke ------------------- */
+
+.md-typeset code {
+    background-color: rgba(93, 64, 55, 0.1); /* Transparenter Matsch */
+    color: var(--drecksau-brown);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.md-typeset pre > code {
+    background-color: #3E2723; /* Dunkler Matsch Hintergrund für Code-Blöcke */
+    color: #F2E7D5; /* Helle Schrift */
+    border-radius: 8px;
+}

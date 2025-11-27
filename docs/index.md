@@ -9,3 +9,6 @@
 * Testkonzept
 * Lessons Learned
 
+
+![Kartenspiel Drecksau](assets/cover_drecksau.png){ width="200" }
+

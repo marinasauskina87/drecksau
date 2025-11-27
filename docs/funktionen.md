@@ -1,28 +1,29 @@
-# Funktionenübersicht
+# Funktionen
 
-Die folgenden Abschnitte listen **alle Funktionen** des Projekts inklusive **Code** auf.
-
----
-
-## 🟦 Backend
-::: backend
-    options:
-      members: "*"
-      show_source: true
+??? note "Backend"
+    
+    ::: backend
+        options:
+          show_submodules: true
+          members: true
+          heading_level: 3
 
 ---
 
-## 🟩 Frontend
-::: frontend
-    options:
-      members: "*"
-      show_source: true
+??? note "Frontend"
+    
+    ::: frontend
+        options:
+          show_submodules: true
+          members: true
+          heading_level: 3
 
 ---
 
-## 🟧 Logik
-::: logik
-    options:
-      members: "*"
-      show_source: true
-
+??? note "Logik"
+    
+    ::: logik
+        options:
+          show_submodules: true
+          members: true
+          heading_level: 3
