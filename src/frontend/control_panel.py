@@ -26,6 +26,7 @@ from logik.check_action_locked import check_action_locked
 from logik.check_action_open import check_action_open
 from logik.check_action_stable import check_action_stable
 from logik.check_function_dirty import check_action_dirty
+from logik.check_if_player_won import has_player_won
 
 def update_UI(root_window, player_number, pig_number, player_dict):
     pigs = root_window.nametowidget(f"pigs_player_{int(player_number)}")
@@ -56,6 +57,27 @@ def update_UI(root_window, player_number, pig_number, player_dict):
     
     for to_be_removed_card in to_be_removed_support_cards:
         manage_support_cards.remove_support_card(root_window, player_number, pig_number, to_be_removed_card)
+    
+    config.update_frame_statistics(root)
+
+def withdrew_cards(root, card_dict_players):
+    global current_player
+    print("LAAA", card_dict_players[f"player-{current_player}"])
+
+    for action_card in card_dict_players[f"player-{current_player}"]:
+        config.played_cards.append(action_card)
+
+    card_dict_players[f"player-{current_player}"].clear()
+    manage_action_cards.draw_cards(current_player, 3, card_dict_players)
+
+    # Standard configuration after move
+    current_player = config.configure_current_player(current_player)
+    change_state_player_pigs(root, "disabled")
+    manage_action_cards.show_action_cards(root, card_dict_players, current_player)
+    setup_command_action_card(root, card_dict_players)
+
+    # As Update-UI would be a waste, we still have to update the statistics
+    config.update_frame_statistics(root)
 
 def parse_widget_to_pig_location(widget):
     """
@@ -84,7 +106,7 @@ def setup_command_pigs(root_window):
             if (pig.__class__.__name__ == "CTkButton"):
                 pig.configure(command=lambda button=pig: trigger_action(button))
 
-def setup_command_action_card(root_window):
+def setup_command_action_card(root_window, card_dict_players):
     # During action-card-button initialisation, the command-function (executed when clicked) couldn't
     # be initialised as it is in another module. Therefore, it is done here
     action_cards = root_window.nametowidget(f"action_cards")
@@ -93,8 +115,11 @@ def setup_command_action_card(root_window):
         if (action_card.__class__.__name__ == "CTkButton"):
             if (hasattr(action_card.cget("image"), "pil_image")):
                 action_card.configure(command=lambda button=action_card: handle_action_card_selection(button))
-            else:
-                action_card.configure(command=lambda button=action_card: waste_action_card(root_window))
+            if action_card.flag == "waste_btn":
+                action_card.configure(command=lambda: waste_action_card(root_window))
+            if action_card.flag == "withdraw_btn":
+                action_card.configure(command=lambda: withdrew_cards(root_window, card_dict_players))
+
 
 def handle_played_action_card(current_player, played_card, card_dict_players):
     # Remove the played card
@@ -102,10 +127,14 @@ def handle_played_action_card(current_player, played_card, card_dict_players):
         if card == played_card:
             card_dict_players[f"player-{current_player}"].pop(index)
             break
+    
+    # Add the removed card to the history of played cards:
+    config.played_cards.append(played_card)
 
     # Draw a card
     new_card = manage_action_cards.choose_random_card()
     card_dict_players[f"player-{current_player}"].append(new_card[0])
+
     return card_dict_players
 
 def trigger_action(clicked_btn):
@@ -129,13 +158,6 @@ def trigger_action(clicked_btn):
             selected_player = selected_entity["player_number"]
             selected_action_card = action_card.cget("image").pil_image.split('.')[0]
             selected_player_dict = globals()[f"dict_player_pigs_{selected_player}"]
-
-            handle_played_action_card(current_player, selected_action_card, card_dict_players)
-
-            # If a status card has been played:
-            selected_player_dict = globals()[f"dict_player_pigs_{selected_player}"]
-
-            handle_played_action_card(current_player, selected_action_card, card_dict_players)
 
             # If a status card has been played:
             if (selected_action_card in config.status_cards):
@@ -169,6 +191,7 @@ def trigger_action(clicked_btn):
                             print("ACTION BAUER SCHRUBBT DIE SAU FAILED")
                     else:
                         print(f"Card not found {selected_action_card}")
+                        correct_move=False
                 else:
                     correct_move=False
                     print("DONT ATTACK YOURSELF")
@@ -195,18 +218,24 @@ def trigger_action(clicked_btn):
                             print("ACTION BAUER AERGERE DICH FAILED")
                     else:
                         print("This action is not possible")
+                        correct_move=False
                 else:
                     correct_move=False
                     print("WHY DO YOU HELP THE OTHERS? ITS A GAME")
-            # Update the GUI after changes
-            update_UI(root, selected_player, selected_pig, selected_player_dict)
 
     if correct_move:
-        # Standard configuration after move
-        current_player = config.configure_current_player(current_player)
-        change_state_player_pigs(root, "disabled")
-        manage_action_cards.show_action_cards(root, card_dict_players, current_player)
-        setup_command_action_card(root)
+        handle_played_action_card(current_player, selected_action_card, card_dict_players)
+        # Update the GUI after changes
+        update_UI(root, selected_player, selected_pig, selected_player_dict)
+        if not has_player_won(selected_player_dict):
+            # Standard configuration after move
+            current_player = config.configure_current_player(current_player)
+            change_state_player_pigs(root, "disabled")
+            manage_action_cards.show_action_cards(root, card_dict_players, current_player)
+            setup_command_action_card(root, card_dict_players)
+        else:
+            CTkMessagebox(title="GAME OVER!", message=f"PLAYER {current_player} HAS WON!", icon="check", option_1="Close game")
+            root.destroy()
 
 def handle_action_card_selection(clicked_action_card):
     global current_player
@@ -227,21 +256,21 @@ def handle_action_card_selection(clicked_action_card):
         else:
             list_of_all_pigs = action_tornado(list_of_all_pigs)
         
-        # Update the GUI for every pig
-        for player in range(1, config.amount_of_players+1):
-            for pig in range(1, config.pigs_per_player[config.amount_of_players]+1):
-                update_UI(root, player, pig, globals()[f"dict_player_pigs_{player}"])
-
         if (selected_action_card == "Regenkarte"):
             handle_played_action_card(current_player, "Regenkarte", card_dict_players)
         else:
             handle_played_action_card(current_player, "Tornadokarte", card_dict_players)
+
+        # Update the GUI for every pig
+        for player in range(1, config.amount_of_players+1):
+            for pig in range(1, config.pigs_per_player[config.amount_of_players]+1):
+                update_UI(root, player, pig, globals()[f"dict_player_pigs_{player}"])
         
         # Standard configuration after move
         current_player = config.configure_current_player(current_player)
         change_state_player_pigs(root, "disabled")
         manage_action_cards.show_action_cards(root, card_dict_players, current_player)
-        setup_command_action_card(root)
+        setup_command_action_card(root, card_dict_players)
 
     # If no spread-move has been played
     else:
@@ -262,17 +291,19 @@ def waste_action_card(root_window):
     for widget in frame_action_cards.winfo_children():
         if widget.__class__.__name__ == "CTkButton":
             if widget.flag == "Selected":
-                handle_played_action_card(current_player, widget.cget("image").pil_image, card_dict_players)
+                handle_played_action_card(current_player, widget.cget("image").pil_image.split('.')[0], card_dict_players)
     
     # Standard configuration after move
     current_player = config.configure_current_player(current_player)
     change_state_player_pigs(root, "disabled")
-    change_state_player_pigs(root, "disabled")
     manage_action_cards.show_action_cards(root, card_dict_players, current_player)
-    setup_command_action_card(root)
+    setup_command_action_card(root, card_dict_players)
 
     # For showing waste-card-button
     manage_action_cards.is_waste_button_visible(frame_action_cards, False)
+
+    # As Update-UI would be a waste, we still have to update the statistics
+    config.update_frame_statistics(root)
 
 
 def change_state_player_pigs(root_window, new_state):
@@ -295,6 +326,8 @@ card_dict_players = config.configure_player_card_dictionary(config.amount_of_pla
 
 root = config.configure_board()
 
+config.create_frame_statistics(root)
+
 # Pigs preparation
 root = manage_pigs.add_pigs(root)
 setup_command_pigs(root)
@@ -305,6 +338,7 @@ for player in range(1,config.amount_of_players+1):
     manage_action_cards.draw_cards(player, 3, card_dict_players)
 manage_action_cards.create_frame(root)
 manage_action_cards.show_action_cards(root, card_dict_players, current_player)
-setup_command_action_card(root)
+
+setup_command_action_card(root, card_dict_players)
 
 root.mainloop()

@@ -1,5 +1,6 @@
 from customtkinter import *
 from CTkMessagebox import CTkMessagebox
+import tkinter
 from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG support
 
 # Hard-Coded config variables
@@ -11,6 +12,8 @@ card_deck = [["Matschkarte", 21], #21
              ["Bauer-schrubbt-die-Sau-Karte", 8], #8
              ["Bauer-ärgere-dich-Karte", 4], #4
              ["Tornadokarte", 2]] #2
+
+played_cards = []
 
 amount_of_players = 4
 
@@ -35,14 +38,35 @@ def pop_up_amount_of_player():
     msg_amount_players = CTkMessagebox(title="Welcome! :D", message="With how many players do you want to play?", icon="question", option_1="2", option_2="3", option_3="4")
     amount_of_players = int(msg_amount_players.get())
 
+def create_frame_statistics(root_window):
+    frame_stats = tkinter.Frame(root_window, name="statistics", bg="grey")
+    lbl_title_stats = CTkLabel(frame_stats, text="STATISTICS:")
+    lbl_title_stats.grid(row=0)
+    for index, card in enumerate(card_deck):
+        lbl_stat = CTkLabel(frame_stats, text=f"{card[0]}: {played_cards.count(card[0])}")
+        lbl_stat.grid(row=index+1, padx=5)
+    frame_stats.grid(column=4, row=1, rowspan=5, sticky="e")
+
+def update_frame_statistics(root_window):
+    frame = root_window.nametowidget("statistics")
+    for lbl in frame.winfo_children():
+        if not (lbl.cget("text") == "STATISTICS:"):
+            played_card = lbl.cget("text").split(":")[0]
+            lbl.configure(text=f"{played_card}: {played_cards.count(played_card)}")
+
+def close_application():
+    tkinter._default_root.destroy()
+
 def configure_board():
     # Will represent the main window
     root = CTkToplevel()
+    root.protocol("WM_DELETE_WINDOW", close_application)
 
     # Fullscreen
-    width = root.winfo_screenwidth()               
+    width = root.winfo_screenwidth()    
     height = root.winfo_screenheight()            
     root.geometry(f"{width}x{height}")
+    print("Your window will be scaled on the computer size:", width, "-", height)
     
     # Part the grid in 5 rows and 5 columns (equally thick)
     root.grid_columnconfigure(0, weight=1)
@@ -60,13 +84,15 @@ def configure_board():
     # Needed to get the updated width & height later
     root.update()
 
+    # Background picture:
     background_img = Image.open("frontend/images/Hintergrund.jpg")
     background_img = background_img.resize((root.winfo_width(), root.winfo_height()))
     photo_background_img = ImageTk.PhotoImage(background_img)
-
+    
     lbl_background_img = CTkLabel(root, image=photo_background_img, text="")
-    # Set the background image over the whole window
-    lbl_background_img.grid(row=0, column=0, rowspan=5, columnspan=5)
+    lbl_background_img.grid(row=0, column=0, rowspan=5, columnspan=5, sticky="nsew")
+
+    root.update()
 
     return root
 

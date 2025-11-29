@@ -47,7 +47,7 @@ def clear_action_cards(action_card_frame):
     # Destroy previous widgets
     for widget in action_card_frame.winfo_children():
         widget.destroy()
-
+    
 def show_action_cards(root_window, card_dict_players, current_player):
     frame_action_cards = root_window.nametowidget(f"action_cards")
     frame_action_cards.configure(bg="#DDDDDD")
@@ -69,9 +69,14 @@ def show_action_cards(root_window, card_dict_players, current_player):
         btn_action_card.grid(column=index, row=1)
     
     # Button for wasting cards
+    btn_withdrew_cards = CTkButton(frame_action_cards, text="Withdrew your cards")
+    btn_withdrew_cards.flag = "withdraw_btn"
+    btn_withdrew_cards.grid(row=2, columnspan=3, sticky="ew")
+    
+    # Button for wasting cards
     btn_waste_card = CTkButton(frame_action_cards, text="Waste selected action_card")
     btn_waste_card.flag = "waste_btn"
-    btn_waste_card.grid(row=2, columnspan=3, sticky="ew")
+    btn_waste_card.grid(row=3, columnspan=3, sticky="ew")
     # Saves position of button
     btn_waste_card.grid_remove()
 

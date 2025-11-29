@@ -13,7 +13,7 @@ def add_support_card(root_window, player, pig, action_card):
     frame_exist = False
     pigs_of_player = root_window.nametowidget(f"pigs_player_{player}")
     for widget in pigs_of_player.winfo_children():
-        if str(widget) == f".pigs_player_{player}.frame_support_cards_player_{player}_pig_{pig}":
+        if str(widget) == f".!ctktoplevel.pigs_player_{player}.frame_support_cards_player_{player}_pig_{pig}":
             frame_support_cards = widget
             frame_exist = True
     if not frame_exist:
@@ -48,11 +48,12 @@ def add_support_card(root_window, player, pig, action_card):
 
 def get_support_cards(root_window, player, pig):
     list_of_support_cards = []
+    root_window.update()
     # Get frame which contains all the pigs of a player
     pigs_of_player = root_window.nametowidget(f"pigs_player_{player}")
     for widget in pigs_of_player.winfo_children():
         # If the selected pig already has a frame for the support cards
-        if str(widget) == f".pigs_player_{player}.frame_support_cards_player_{player}_pig_{pig}":
+        if str(widget) == f".!ctktoplevel.pigs_player_{player}.frame_support_cards_player_{player}_pig_{pig}":
             for support_card in widget.winfo_children():
                 # Add every support card to a list
                 list_of_support_cards.append(support_card.cget("image").pil_image)
@@ -66,7 +67,7 @@ def remove_support_card(root_window, player, pig, action_card):
     # Get frame which contains all the pigs of a player
     pigs_of_player = root_window.nametowidget(f"pigs_player_{player}")
     for widget in pigs_of_player.winfo_children():
-        if str(widget) == f".pigs_player_{player}.frame_support_cards_player_{player}_pig_{pig}":
+        if str(widget) == f".!ctktoplevel.pigs_player_{player}.frame_support_cards_player_{player}_pig_{pig}":
             # Widget is the frame with the support cards of a certain pig
             for subwidget in widget.winfo_children():
                 # If the action_card is in the list of support cards for this pig:
