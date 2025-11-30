@@ -5,7 +5,7 @@
 
 * Anforderung
 * Technische Umsetzung
-* Auflistung der Funktionen
+* Funktionen
 * Testkonzept
 * Lessons Learned
 

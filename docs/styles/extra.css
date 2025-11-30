@@ -1,150 +1,179 @@
-/* ------------------- Farb-Definitionen (Drecksau Theme) ------------------- */
+/* ----------------------------------------------------- */
+/* Minimalistisches Drecksau Theme – klar & spielbezogen */
+/* ----------------------------------------------------- */
+
+/* ------------------- Farbpalette (Kosmos Drecksau) ------------------- */
 :root {
-    /* Hauptfarben aus dem Bild extrahiert */
-    --drecksau-blue: #4aa3df;   /* Der Himmel */
-    --drecksau-brown: #5D4037;  /* Der Matsch (Dunkel) */
-    --drecksau-mud: #8D6E63;    /* Der Matsch (Hell) */
-    --drecksau-orange: #FF9800; /* Das Logo Orange */
-    --drecksau-pink: #F48FB1;   /* Das Schweinchen */
-    --drecksau-green: #8BC34A;  /* Die Wiese */
-    --drecksau-bg: #FFF8E1;     /* Sehr helles Beige (Papier) für guten Kontrast */
+    --drecksau-pink:  #F48FB1;  /* Schweinchen */
+    --drecksau-brown: #6D4C41;  /* Matsch */
+    --drecksau-green: #8BC34A;  /* Wiese */
+    --drecksau-orange:#FF9800;  /* Logo */
+    --drecksau-blue:  #4AA3DF;  /* Himmel */
 
-    /* MkDocs Material Variablen überschreiben */
-    --md-primary-fg-color:        var(--drecksau-blue);
-    --md-primary-fg-color--light: var(--drecksau-blue);
-    --md-primary-fg-color--dark:  #368ecf;
-    --md-primary-bg-color:        #ffffff;
+    --neutral-bg:     #FAF7F1;  /* sanftes Beige */
+    --neutral-bg2:    #F4EEE6;
+    --neutral-border: #D7CEC4;
+    --neutral-text:   #2F2A26;
 
-    --md-accent-fg-color:         var(--drecksau-orange);
-
-    /* Text Farbe: Ein sehr dunkles Braun ist angenehmer als reines Schwarz */
-    --md-text-color:              #3E2723;
-    --md-code-bg-color:           #efebe9; /* Leichtes Braun-Grau für Code */
+    --code-bg:        #F1E9DF;  /* dezentes beige */
 }
 
-/* ------------------- Globales Layout & Hintergrund ------------------- */
+/* ------------------- Globales Layout ------------------- */
 
-/* Der Hintergrund der Seite */
 .md-main__inner {
-    /* Optional: Ein leichter Verlauf, der an Himmel und Wiese erinnert */
-    background: linear-gradient(to bottom, #ffffff 0%, var(--drecksau-bg) 100%);
+    background: var(--neutral-bg);
 }
 
-/* Alles etwas runder machen (Cartoon-Look) */
 .md-grid {
-    max-width: 1200px;
+    max-width: 1100px;
 }
 
 /* ------------------- Typografie ------------------- */
 
-/* Überschriften im "Drecksau"-Logo Stil */
+body, .md-typeset {
+    color: var(--neutral-text);
+    font-family: "Inter", sans-serif;
+    line-height: 1.55;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fredoka', sans-serif !important;
     color: var(--drecksau-brown);
     font-weight: 600;
 }
 
-h1 {
-    font-size: 2.5em;
-    /* Leichter oranger Schatten für den 3D-Effekt wie auf der Box */
-    text-shadow: 2px 2px 0px rgba(255, 152, 0, 0.3);
-}
-
-/* ------------------- Header & Navigation ------------------- */
+/* ------------------- Header & Tabs ------------------- */
 
 .md-header {
-    background-color: var(--drecksau-blue);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: var(--drecksau-blue);
 }
 
-/* Tabs Navigation (falls aktiviert) */
 .md-tabs {
-    background-color: var(--drecksau-blue);
+    background: var(--drecksau-blue);
 }
 
-.md-tabs__link {
+.md-tabs__link,
+.md-header__title {
     color: white;
-    font-family: 'Fredoka', sans-serif;
 }
 
-/* Sidebar Styling */
-.md-sidebar {
-    background-color: transparent;
-}
-
-.md-nav__link--active {
-    color: var(--drecksau-orange) !important;
-    font-weight: bold;
-}
-
-/* ------------------- Links & Buttons ------------------- */
+/* ------------------- Links ------------------- */
 
 a {
     color: var(--drecksau-orange);
     text-decoration: none;
-    font-weight: 500;
 }
 
 a:hover {
-    color: var(--drecksau-brown);
     text-decoration: underline;
 }
 
+/* ------------------- Buttons ------------------- */
+
 .md-button {
-    background-color: var(--drecksau-orange);
+    background: var(--drecksau-green);
     color: white !important;
-    border-radius: 20px; /* Schön rund */
-    font-family: 'Fredoka', sans-serif;
-    transition: transform 0.2s;
-    border: 2px solid transparent;
+    border-radius: 4px;
 }
 
 .md-button:hover {
-    background-color: var(--drecksau-brown);
-    transform: scale(1.05); /* Button "hüpft" leicht beim Hover */
+    background: #75A83E;
 }
 
-.md-button--primary {
-    background-color: var(--drecksau-green); /* Primäre Buttons in Grün (Wiese) */
-}
+/* ------------------- Admonitions ------------------- */
 
-/* ------------------- Admonitions (Hinweisboxen) ------------------- */
-
-/* Das Standard-Design etwas aufpeppen */
 .admonition {
-    border-radius: 12px;
-    border-left-width: 6px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    border-left-width: 4px;
 }
 
-.admonition-title {
-    font-family: 'Fredoka', sans-serif;
-}
+.admonition.note     { border-color: var(--drecksau-blue); }
+.admonition.info     { border-color: var(--drecksau-blue); }
+.admonition.warning  { border-color: var(--drecksau-orange); }
+.admonition.danger   { border-color: var(--drecksau-brown); }
+.admonition.success  { border-color: var(--drecksau-green); }
 
-/* Spezifische Farben für Warnungen etc. anpassen */
-.admonition.note, .admonition.info {
-    border-color: var(--drecksau-blue);
-}
-
-.admonition.warning, .admonition.danger {
-    border-color: var(--drecksau-orange);
-}
-
-.admonition.success {
-    border-color: var(--drecksau-green);
-}
-
-/* ------------------- Codeblöcke ------------------- */
+/* ------------------- Code minimal & passend ------------------- */
 
 .md-typeset code {
-    background-color: rgba(93, 64, 55, 0.1); /* Transparenter Matsch */
-    color: var(--drecksau-brown);
-    border-radius: 4px;
-    font-weight: bold;
+    background: var(--code-bg);
+    color: var(--neutral-text);
+    border-radius: 3px;
+    padding: 2px 4px;
 }
 
+/* Mehrzeilige Blöcke */
 .md-typeset pre > code {
-    background-color: #3E2723; /* Dunkler Matsch Hintergrund für Code-Blöcke */
-    color: #F2E7D5; /* Helle Schrift */
-    border-radius: 8px;
+    background: var(--code-bg);
+    border: 1px solid var(--neutral-border);
+    border-radius: 4px;
+    padding: 1em;
+}
+
+.md-typeset pre {
+    background: none !important;
+}
+
+/* ------------------- mkdocstrings – klar & spielbezogen ------------------- */
+
+.doc-object {
+    margin-bottom: 2em;
+    padding: 1.2em 1.2em;
+    border: 1px solid var(--neutral-border);
+    border-radius: 6px;
+    background: var(--neutral-bg2);
+}
+
+/* Funktionsüberschriften */
+.doc-object h3,
+.doc-object h4 {
+    border-bottom: 2px solid var(--neutral-border);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    color: var(--drecksau-brown);
+}
+
+/* Funktions-Signaturen */
+.doc-signature {
+    background: #FFF7EB; /* sanftes Orange-Beige passend zum Spiel */
+    padding: 0.6em 1em;
+    border-radius: 4px;
+    font-family: monospace;
+    border-left: 4px solid var(--drecksau-orange);
+    margin-bottom: 1em;
+}
+
+/* Parameter-Tabellen */
+.doc-contents table {
+    border: 1px solid var(--neutral-border);
+    border-radius: 4px;
+}
+
+.doc-contents table th {
+    background: var(--neutral-bg2);
+}
+
+.doc-contents table td {
+    background: white;
+}
+
+/* leichte Einrückung */
+.doc-contents {
+    margin-left: 0.3em;
+}
+
+/* Module gut getrennt */
+.doc-module {
+    border-top: 3px solid var(--drecksau-green);
+    padding-top: 1.5em;
+    margin-top: 3em;
+}
+
+/* Parameter */
+.md-typeset dt {
+    font-weight: 600;
+    color: var(--drecksau-brown);
+}
+
+.md-typeset dd {
+    margin-bottom: 10px;
 }
