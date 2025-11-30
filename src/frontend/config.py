@@ -67,22 +67,12 @@ def configure_board():
     height = root.winfo_screenheight()            
     root.geometry(f"{width}x{height}")
     print("Your window will be scaled on the computer size:", width, "-", height)
+    root.update()
     
     # Part the grid in 5 rows and 5 columns (equally thick)
-    root.grid_columnconfigure(0, weight=1)
-    root.grid_columnconfigure(1, weight=1)
-    root.grid_columnconfigure(2, weight=1)
-    root.grid_columnconfigure(3, weight=1)
-    root.grid_columnconfigure(4, weight=1)
-    
-    root.grid_rowconfigure(0, weight=1)
-    root.grid_rowconfigure(1, weight=1)
-    root.grid_rowconfigure(2, weight=1)
-    root.grid_rowconfigure(3, weight=1)
-    root.grid_rowconfigure(4, weight=1)
-    
-    # Needed to get the updated width & height later
-    root.update()
+    for index in range(5):
+        root.grid_columnconfigure(index, weight=1)
+        root.grid_rowconfigure(index, weight=1)
 
     # Background picture:
     background_img = Image.open("frontend/images/Hintergrund.jpg")
@@ -90,6 +80,7 @@ def configure_board():
     photo_background_img = ImageTk.PhotoImage(background_img)
     
     lbl_background_img = CTkLabel(root, image=photo_background_img, text="")
+    lbl_background_img.image=photo_background_img
     lbl_background_img.grid(row=0, column=0, rowspan=5, columnspan=5, sticky="nsew")
 
     root.update()
