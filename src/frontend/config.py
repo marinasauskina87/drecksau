@@ -24,9 +24,12 @@ pigs_per_player = {
 }
 
 state_to_card = {
+    "dirty": "Matschkarte",
+    "clean": "Bauer-schrubbt-die-Sau-Karte",
     "stable": "Stallkarte",
     "locked": "Bauer-ärgere-dich-Karte",
-    "current_arrester": "Blitzableiterkarte"
+    "current_arrester": "Blitzableiterkarte",
+    "flash": "Blitzkarte"
 }
 
 status_cards = ["Matschkarte"]

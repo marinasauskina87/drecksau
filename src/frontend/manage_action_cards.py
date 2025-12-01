@@ -68,7 +68,7 @@ def show_action_cards(root_window, card_dict_players, current_player):
         btn_action_card.flag = "Inactive"
         btn_action_card.grid(column=index, row=1)
     
-    # Button for wasting cards
+    # Button for withdrewing cards
     btn_withdrew_cards = CTkButton(frame_action_cards, text="Withdrew your cards")
     btn_withdrew_cards.flag = "withdraw_btn"
     btn_withdrew_cards.grid(row=2, columnspan=3, sticky="ew")

@@ -27,6 +27,7 @@ from logik.check_action_open import check_action_open
 from logik.check_action_stable import check_action_stable
 from logik.check_function_dirty import check_action_dirty
 from logik.check_if_player_won import has_player_won
+from logik.check_action_withdraw_cards import check_withdraw_cards
 
 def standard_config_after_move(root, card_dict_players):
     global current_player
@@ -71,14 +72,21 @@ def update_UI(root_window, player_number, pig_number, player_dict):
     config.update_frame_statistics(root)
 
 def withdrew_cards(root, card_dict_players):
-    for action_card in card_dict_players[f"player-{current_player}"]:
-        config.played_cards.append(action_card)
+    list_of_all_pigs = []
+    for player_num in range(1, config.amount_of_players+1):
+        list_of_all_pigs.append(globals()[f"dict_player_pigs_{player_num}"])
+    if not (check_withdraw_cards(card_dict_players[f"player-{current_player}"], list_of_all_pigs, current_player) == 0):
+        for action_card in card_dict_players[f"player-{current_player}"]:
+            config.played_cards.append(action_card)
 
-    card_dict_players[f"player-{current_player}"].clear()
-    manage_action_cards.draw_cards(current_player, 3, card_dict_players)
+        card_dict_players[f"player-{current_player}"].clear()
+        manage_action_cards.draw_cards(current_player, 3, card_dict_players)
 
-    # As Update-UI would be a waste, we still have to update the statistics
-    config.update_frame_statistics(root)
+        standard_config_after_move(root, card_dict_players)
+        # As Update-UI would be a waste, we still have to update the statistics
+        config.update_frame_statistics(root)
+    else:
+        print("ERROR: You can play.")
 
 def parse_widget_to_pig_location(widget):
     """
