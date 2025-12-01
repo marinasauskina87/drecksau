@@ -5,12 +5,14 @@ from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG suppo
 import frontend.config as config
 
 
-def prepare_pig_image(player, pig_state):
+def prepare_pig_image(player, pig_state, width_of_window):
+    # Formula based on trial with 16-zoll and 14-zoll desktops
+    scaling_factor = 0.5 + 0.002 * (width_of_window-1260)
     positions = config.get_positions(config.amount_of_players)
 
     # Image-Path can be accessed by "img_pig.filename"
     img_pig = Image.open(f"frontend/images/{pig_state}.png")
-    rez_img_pig = img_pig.resize((int(img_pig.width*0.8), int(img_pig.height*0.8)))
+    rez_img_pig = img_pig.resize((int(img_pig.width*scaling_factor), int(img_pig.height*scaling_factor)))
     rez_img_pig_rot = rez_img_pig.rotate(positions[player][3], expand=True)
     widget_img_pig = ImageTk.PhotoImage(rez_img_pig_rot)
 
@@ -26,7 +28,7 @@ def add_pigs(root_window):
         group_of_pigs.grid(row=positions[player][0], column=positions[player][1], sticky=positions[player][2])
 
         for pig in range(amount_of_pigs):
-            btn_pig = CTkButton(group_of_pigs, text="", image=prepare_pig_image(player, "Sauberschwein"), fg_color="transparent", width=0, state="disabled")
+            btn_pig = CTkButton(group_of_pigs, text="", image=prepare_pig_image(player, "Sauberschwein", root_window.winfo_screenwidth()), fg_color="transparent", width=0, state="disabled")
             # Needed for an faster recognition of the selected pig
             btn_pig.flag = pig+1
             if (positions[player][3] % 180 == 0):
@@ -78,9 +80,9 @@ def add_pigs(root_window):
 def change_state_pig(root_window, player, pig, new_state):
     player = int(player)
     if new_state == "dirty":
-        new_img_widget = prepare_pig_image(player-1, "Dreckssau")
+        new_img_widget = prepare_pig_image(player-1, "Dreckssau", root_window.winfo_screenwidth())
     elif new_state == "clean":
-        new_img_widget = prepare_pig_image(player-1, "Sauberschwein")
+        new_img_widget = prepare_pig_image(player-1, "Sauberschwein", root_window.winfo_screenwidth())
     else:
         return f"Wrong state: {new_state}"
     
