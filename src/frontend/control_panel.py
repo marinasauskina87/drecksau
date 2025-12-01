@@ -86,7 +86,8 @@ def withdrew_cards(root, card_dict_players):
         # As Update-UI would be a waste, we still have to update the statistics
         config.update_frame_statistics(root)
     else:
-        print("ERROR: You can play.")
+        msg_withdraw_failed = CTkMessagebox(title="Withdraw Cards", message="You cannot withdraw cards at this time.", icon="warning")
+        msg_withdraw_failed.after(1500, msg_withdraw_failed.destroy)
 
 def parse_widget_to_pig_location(widget):
     """
@@ -174,10 +175,13 @@ def trigger_action(clicked_btn):
                         msg_dreckssau.after(1000, msg_dreckssau.destroy)
                     else:
                         correct_move=False
-                        print("ACTION DIRTY FAILED")
+                        msg_dirty_failed = CTkMessagebox(title="Action dirty failed", message="You cannot dirty this pig because it is already dirty.", icon="warning")
+                        msg_dirty_failed.after(2000, msg_dirty_failed.destroy)
                 else:
                     correct_move=False
-                    print("YOU MAY NOT DIRTY SOMEONE ELSE")
+                    msg_dirty_someone = CTkMessagebox(title="Action dirty failed", message="You cannot dirty someone else's pig.", icon="warning")
+                    msg_dirty_someone.after(1500, msg_dirty_someone.destroy)
+
             # If an action card has been played:
             elif (selected_action_card in config.actional_cards):
                 if not (str(current_player) == selected_player):
@@ -186,7 +190,8 @@ def trigger_action(clicked_btn):
                             selected_player_dict = action_flash(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            print("ACTION FLASH FAILED")
+                            msg_flash_failed = CTkMessagebox(title="Action flash failed", message="Action flash failed because there is no stable or current arrester.", icon="warning")
+                            msg_flash_failed.after(1500, msg_flash_failed.destroy)
                     elif (selected_action_card == "Bauer-schrubbt-die-Sau-Karte"):
                         if check_action_open(selected_player_dict, selected_pig_str) == 0:
                             selected_player_dict = action_stable_open(selected_player_dict, selected_pig_str)
@@ -194,13 +199,16 @@ def trigger_action(clicked_btn):
                             msg_dreckssau.after(1000, msg_dreckssau.destroy)
                         else:
                             correct_move=False
-                            print("ACTION BAUER SCHRUBBT DIE SAU FAILED")
+                            msg_open_failed = CTkMessagebox(title="Action open failed", message="Action open failed because the pig is in a locked stable or already clean.", icon="warning")
+                            msg_open_failed.after(2000, msg_open_failed.destroy)
                     else:
-                        print(f"Card not found {selected_action_card}")
+                        msg_general_error = CTkMessagebox(title="Error", message="General error occurred. Please contact support.", icon="warning")
+                        msg_general_error.after(2000, msg_general_error.destroy)
                         correct_move=False
                 else:
                     correct_move=False
-                    print("DONT ATTACK YOURSELF")
+                    msg_donot_attack = CTkMessagebox(title="Don't attack yourself", message="Don't attack yourself.", icon="warning")
+                    msg_donot_attack.after(1500, msg_donot_attack.destroy)
             # If a support card has been played:
             elif (selected_action_card in config.support_cards):
                 if (str(current_player) == selected_player):
@@ -209,25 +217,30 @@ def trigger_action(clicked_btn):
                             selected_player_dict = action_stable(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            print("ACTION STABLE FAILED")
+                            msg_stable_failed = CTkMessagebox(title="Action stable failed", message="Action stable failed.", icon="warning")
+                            msg_stable_failed.after(1500, msg_stable_failed.destroy)
                     elif selected_action_card == "Blitzableiterkarte":
                         if check_current_arrester(selected_player_dict, selected_pig_str) == 0:
                             selected_player_dict = action_current_arrester(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            print("ACTION ARRESTER FAILED")
+                            msg_arrester_failed = CTkMessagebox(title="Action arrester failed", message="Action arrester failed because there is no stable or already a current arrester.", icon="warning")
+                            msg_arrester_failed.after(2000, msg_arrester_failed.destroy)
                     elif selected_action_card == "Bauer-ärgere-dich-Karte":
                         if check_action_locked(selected_player_dict, selected_pig_str) == 0:
                             selected_player_dict = action_stable_locked(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            print("ACTION BAUER AERGERE DICH FAILED")
+                            msg_locked_failed = CTkMessagebox(title="Action locked failed", message="Action locked failed because the pig is not in a stable or already locked.", icon="warning")
+                            msg_locked_failed.after(2000, msg_locked_failed.destroy)
                     else:
-                        print("This action is not possible")
+                        msg_general_error2 = CTkMessagebox(title="General error", message="An error has occurred. Please contact support.", icon="question")
+                        msg_general_error2.after(2000, msg_general_error2.destroy)
                         correct_move=False
                 else:
                     correct_move=False
-                    print("WHY DO YOU HELP THE OTHERS? ITS A GAME")
+                    msg_help_others = CTkMessagebox(title="Don't help others", message="Don't help the others.", icon="warning")
+                    msg_help_others.after(1500, msg_help_others.destroy)
 
     if correct_move:
         handle_played_action_card(current_player, selected_action_card, card_dict_players)
