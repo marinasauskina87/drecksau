@@ -8,7 +8,7 @@ import frontend.config as config
 def prepare_pig_image(player, pig_state, screen_width, screen_height):
     ## Formula based on trial with 16-inch and 14-inch desktops
     # This has been proven as good size-factor for 16 inch
-    proven_factor = 0.65
+    proven_factor = 0.50
 
     # Scaling factor based on screen diagonal in pixels
     diag_ref = (1440**2 + 900**2)**0.5
