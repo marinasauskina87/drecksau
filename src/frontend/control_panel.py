@@ -175,8 +175,8 @@ def trigger_action(clicked_btn):
                         msg_dreckssau.after(1000, msg_dreckssau.destroy)
                     else:
                         correct_move=False
-                        msg_dirty_failed = CTkMessagebox(title="Action dirty failed", message="You cannot dirty this pig.", icon="warning")
-                        msg_dirty_failed.after(1500, msg_dirty_failed.destroy)
+                        msg_dirty_failed = CTkMessagebox(title="Action dirty failed", message="You cannot dirty this pig because it is already dirty.", icon="warning")
+                        msg_dirty_failed.after(2000, msg_dirty_failed.destroy)
                 else:
                     correct_move=False
                     msg_dirty_someone = CTkMessagebox(title="Action dirty failed", message="You cannot dirty someone else's pig.", icon="warning")
@@ -190,7 +190,7 @@ def trigger_action(clicked_btn):
                             selected_player_dict = action_flash(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            msg_flash_failed = CTkMessagebox(title="Action flash failed", message="Action flash failed.", icon="warning")
+                            msg_flash_failed = CTkMessagebox(title="Action flash failed", message="Action flash failed because there is no stable or current arrester.", icon="warning")
                             msg_flash_failed.after(1500, msg_flash_failed.destroy)
                     elif (selected_action_card == "Bauer-schrubbt-die-Sau-Karte"):
                         if check_action_open(selected_player_dict, selected_pig_str) == 0:
@@ -199,8 +199,8 @@ def trigger_action(clicked_btn):
                             msg_dreckssau.after(1000, msg_dreckssau.destroy)
                         else:
                             correct_move=False
-                            msg_open_failed = CTkMessagebox(title="Action open failed", message="Action open failed.", icon="warning")
-                            msg_open_failed.after(1500, msg_open_failed.destroy)
+                            msg_open_failed = CTkMessagebox(title="Action open failed", message="Action open failed because the pig is in a locked stable or already clean.", icon="warning")
+                            msg_open_failed.after(2000, msg_open_failed.destroy)
                     else:
                         msg_general_error = CTkMessagebox(title="Error", message="General error occurred. Please contact support.", icon="warning")
                         msg_general_error.after(2000, msg_general_error.destroy)
@@ -224,15 +224,15 @@ def trigger_action(clicked_btn):
                             selected_player_dict = action_current_arrester(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            msg_arrester_failed = CTkMessagebox(title="Action arrester failed", message="Action arrester failed.", icon="warning")
-                            msg_arrester_failed.after(1500, msg_arrester_failed.destroy)
+                            msg_arrester_failed = CTkMessagebox(title="Action arrester failed", message="Action arrester failed because there is no stable or already a current arrester.", icon="warning")
+                            msg_arrester_failed.after(2000, msg_arrester_failed.destroy)
                     elif selected_action_card == "Bauer-ärgere-dich-Karte":
                         if check_action_locked(selected_player_dict, selected_pig_str) == 0:
                             selected_player_dict = action_stable_locked(selected_player_dict, selected_pig_str)
                         else:
                             correct_move=False
-                            msg_locked_failed = CTkMessagebox(title="Action locked failed", message="Action locked failed.", icon="warning")
-                            msg_locked_failed.after(1500, msg_locked_failed.destroy)
+                            msg_locked_failed = CTkMessagebox(title="Action locked failed", message="Action locked failed because the pig is not in a stable or already locked.", icon="warning")
+                            msg_locked_failed.after(2000, msg_locked_failed.destroy)
                     else:
                         msg_general_error2 = CTkMessagebox(title="General error", message="An error has occurred. Please contact support.", icon="question")
                         msg_general_error2.after(2000, msg_general_error2.destroy)
