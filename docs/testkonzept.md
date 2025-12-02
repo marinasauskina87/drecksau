@@ -34,8 +34,8 @@ Globale Variablen wie current_player und Spieler-Dictionaries erschweren die Iso
 [**Hier**](dokumente_/Test_Protokoll.pdf) befindet sich das PDF vom **Testprotokoll**. Darunter sieht ihr Bilder zuden Test-Resultaten.
 
 ##Test-Resultate:
-![Links](assets/Bild_Test_1.png){ width="270" .left-img }
-![Rechts](assets/Bild_Test_2.png){ width="270" .right-img }
+![Bild_Test](assets/Bild_Test_1.png){ width="310" }
+![Bild_Test](assets/Bild_Test_2.png){ width="310" }
 
 
 
