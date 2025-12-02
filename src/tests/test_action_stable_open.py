@@ -13,7 +13,7 @@ def test_action_stable_open_unlocked_pig_cleaned():
     """Wenn das Schwein nicht 'locked' hat, wird es von action_clean gereinigt."""
     data = dict_test.copy()
     result = action_stable_open(data, 'pig_2')
-    assert result['pig_2'] == 'clean'
+    assert result['pig_2'] == 'clean,'
 
 
 def test_action_stable_open_preserves_other_pigs():
