@@ -30,7 +30,8 @@ Die mainloop() blockiert die Ausführung von Tests.
 Fast alle Funktionen greifen direkt auf globale GUI-Objekte zu.
 Globale Variablen wie current_player und Spieler-Dictionaries erschweren die Isolation der Logik.
 
-[**Hier**](dokumente_/Test_Protokoll.pdf) befindet sich die PDF Datei zu den Tests. Darunter sieht ihr Bilder zuden Test-Resultaten.
+###Testprotokoll
+[**Hier**](dokumente_/Test_Protokoll.pdf) befindet sich das PDF vom **Testprotokoll**. Darunter sieht ihr Bilder zuden Test-Resultaten.
 
 ##Test-Resultate:
 ![Links](assets/Bild_Test_1.png){ width="270" .left-img }
