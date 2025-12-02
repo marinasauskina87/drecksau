@@ -49,14 +49,12 @@ def test_add_pigs(mock_config, mock_frame, mock_label, mock_button, mock_prepare
     root_window = MagicMock()
     root_window.update = MagicMock()
 
-    # >>>>>>>>>>>>>> IMPORTANT FIX <<<<<<<<<<<<<<
     # Ensure Frame().winfo_width() and winfo_height() return real ints
     frame_instance = MagicMock()
     frame_instance.winfo_width.return_value = 200
     frame_instance.winfo_height.return_value = 100
     mock_frame.return_value = frame_instance
-    # >>>>>>>>>>>>>> END FIX <<<<<<<<<<<<<<
-
+ 
     result = add_pigs(root_window)
 
     assert mock_frame.call_count == 2
@@ -87,7 +85,6 @@ def test_change_state_pig(mock_prepare_img):
     button_mock.configure.assert_called_once_with(image="new_img")
 
 
-# Optional: Test falscher Zustand
 def test_change_state_pig_wrong_state():
     root_window = MagicMock()
     result = change_state_pig(root_window, player=1, pig=1, new_state="invalid")
