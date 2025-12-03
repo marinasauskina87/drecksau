@@ -4,6 +4,16 @@ from PIL import Image, ImageTk, ImageFont, ImageDraw  # Import PIL for PNG suppo
 
 import frontend.config as config
 
+def get_scaling_factor(screen_width, screen_height):
+    proven_factor = 1/5
+
+    # Scaling factor based on screen diagonal in pixels
+    diag_ref = (1440**2 + 900**2)**0.5
+    diag_current = (screen_width**2 + screen_height**2)**0.5
+
+    scaling_factor = proven_factor * (diag_current / diag_ref)
+    return scaling_factor
+
 def add_support_card(root_window, player, pig, action_card):
     positions = config.get_positions(config.amount_of_players)
     player = int(player)
@@ -23,11 +33,11 @@ def add_support_card(root_window, player, pig, action_card):
     for widget in frame_support_cards.winfo_children():
         if widget.cget("image").pil_image.split('.')[0] == action_card:
             return -1
-    
+    scaling_factor = get_scaling_factor(root_window.winfo_screenwidth(), root_window.winfo_screenheight())
     ## Prepare image before adding it
     img_action_card = Image.open(f"frontend/images/{action_card}.png")
     # Resize it (make it three times smaller)
-    pil_img_action_card = img_action_card.resize((int(img_action_card.width / 3), int(img_action_card.height / 3)), Image.Resampling.LANCZOS)
+    pil_img_action_card = img_action_card.resize((int(img_action_card.width * scaling_factor), int(img_action_card.height * scaling_factor)), Image.Resampling.LANCZOS)
     # Rotate it
     resized_photo_rot = pil_img_action_card.rotate(positions[player-1][3], expand=True)
     resized_photo = ImageTk.PhotoImage(resized_photo_rot)
