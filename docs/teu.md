@@ -13,3 +13,8 @@ PM1 mit Python, 3. Projekt - Kartenspiel-Dreckssau
 - Produkt-Owner: Amer P.
 - Scrum-Master: Lucien L.
 - Entwickler-Team: Marina S., Laura M., Lucien L., Amer P.
+
+##Hintergrundbild
+![Kartenspiel Drecksau](assets/Bild_Projekt3.png){ width="550" }
+
+Da CustomTkinter nicht beim Start sofort erkennt, wie gross der Fullscreen ist und dann sofort die Grösse 200x200 wählt, ist das Hintergrundbild teilweise nicht ersichtlich. Bitte in diesem Fall das Programm neustarten.
