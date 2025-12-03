@@ -1,7 +1,7 @@
 # Funktionen
 
-#Entry Point
-Hier sieht ihr eine Auflistung unserer Funktionen vom Code. Die Autoren und weiter angaben befinden sich auf [Jira](https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary).
+##Entry Point
+Hier sieht ihr eine Auflistung unserer Funktionen vom Code. Die Autoren und weitere Angaben bezüglich den Arbeitsablauf, befinden sich auf [Jira](https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary).
 
 ??? note "Backend"
     ::: backend

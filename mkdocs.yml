@@ -62,6 +62,7 @@ markdown_extensions:
 nav:
   - Start: index.md
   - Anforderungen: anforderungen.md
+  - Organisatorische Umsetzung: oru.md
   - Technische Umsetzung: teu.md
   - Funktionen: funktionen.md
   - Testkonzept: testkonzept.md

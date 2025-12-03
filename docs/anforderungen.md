@@ -18,7 +18,10 @@ Das Programm soll über Ein- und Ausgabe in der Konsole vollständig steuerbar s
 ---
 
 ## User Stories & Akzeptanzkriterien
-Die User Stories, die Akzeptanzkriterien und die Definition of Done können im [Jira-Board](https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary) eingesehen werden.
+Die User Stories befinden sich hier:
+
+
+Die Akzeptanzkriterien und die Definition of Done können im [Jira-Board](https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary) eingesehen werden.
 
 Diese dienen als Grundlage für:
 - die Aufgabenteilung im Team,
