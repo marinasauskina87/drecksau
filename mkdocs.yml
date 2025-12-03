@@ -65,4 +65,5 @@ nav:
   - Technische Umsetzung: teu.md
   - Funktionen: funktionen.md
   - Testkonzept: testkonzept.md
+  - Lessons Learned: lessonslearned.md
   - "Jira-Board": "https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary"
