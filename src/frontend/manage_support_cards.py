@@ -71,9 +71,6 @@ def get_support_cards(root_window, player, pig):
 
 
 def remove_support_card(root_window, player, pig, action_card):
-    """
-    f.e. root, 2, 2, "Stallkarte"
-    """
     # Get frame which contains all the pigs of a player
     pigs_of_player = root_window.nametowidget(f"pigs_player_{player}")
     for widget in pigs_of_player.winfo_children():
