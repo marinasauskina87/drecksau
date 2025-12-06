@@ -1,5 +1,5 @@
 ##Ausblick
-* *Was lief gut:*
+###* *Was lief gut:*
 
 >Das Projekt „Drecksau“ war ein komplexes, interaktives Spielprojekt mit vielen Komponenten – von der Logik der Spielaktionen über das Management von Karten und Schweinen bis hin zum Frontend mit Tkinter/CustomTkinter. Insgesamt lässt sich das Projekt als erfolgreich und lehrreich zusammenfassen. Das Projekt wurde im Team umgesetzt, kompetitiv, aber dennoch gut strukturiert. Alle Teammitglieder haben aktiv beigetragen, Aufgaben klar verteilt, was den Fortschritt beschleunigt hat.~ Marina S.
 
@@ -15,7 +15,7 @@
 
 
 
-* *Was lief nicht gut:**
+###* *Was lief nicht gut:*
 
 >Durch das umfangreiche Mocking hat das Schreiben der Tests mehr Zeit in Anspruch genommen als ursprünglich geplant – eine interessante Erfahrung, die mir gezeigt hat, wie viel Detailarbeit hinter Unit-Tests steckt. ~ Marina S.
 
@@ -23,7 +23,7 @@
 >Da ich noch nicht so viel Erfahrung im Programmieren habe, war es teilweise etwas schwierig, die gesamte Logik auf Anhieb zu verstehen. Aber mit der Hilfe vom Team war auch das gut machbar. ~ Laura M.
 
 
-> Meiner Meinung gibt es nicht viel zu bemängeln, ausser das das Projekt ziemlich Aufwändig war im Vergleich zu den letzten zwei Projekten, jedoch konnten wir die Hürde erfolgreich meistern.~Amer P.
+>Meiner Meinung gibt es nicht viel zu bemängeln, ausser das das Projekt ziemlich Aufwändig war im Vergleich zu den letzten zwei Projekten, jedoch konnten wir die Hürde erfolgreich meistern.~Amer P.
 
 
 >Ich habe teilweise das GUI unterschätzt. Die Anordnungen oder das Zusammenspiel der Module war schwieriger als gedacht.~Lucien L. 
