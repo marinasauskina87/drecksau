@@ -32,6 +32,6 @@
 
 
 
-*Das Layout der Dokumentation wurde mithilfe ChatGPT erstellt, darunter gehören Änderungen im .yml-File sowie die ergänzung vom .css-File.*
+> Das Layout der Dokumentation wurde mithilfe ChatGPT erstellt, darunter gehören Änderungen im .yml-File sowie die ergänzung vom .css-File.*
 
 
