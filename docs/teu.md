@@ -46,3 +46,6 @@ Wenn man die Supportkarten ergänzen möchte erfolgt dies, wenn man auf das Schw
 Da CustomTkinter nicht beim Start sofort erkennt, wie gross der Fullscreen ist und dann sofort die Grösse 200x200 wählt, ist das Hintergrundbild teilweise nicht ersichtlich. Bitte in diesem Fall das Programm neustarten.
 
 ![Kartenspiel Drecksau](assets/Bild_Projekt3.png){ width="550" }
+
+##Ausblick
+Als Ausblick bleibt festzuhalten, dass wir als Gruppe die Blitz-Variante von Drecksau gerne noch implementiert und weiterentwickelt hätten, wenn uns mehr Zeit zur Verfügung gestanden wäre.
