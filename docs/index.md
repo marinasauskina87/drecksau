@@ -3,7 +3,7 @@
 1. pip install customtkinter
 2. pip install tkinter
 3. pip install ctkmessagebox
-4. git clone (https://github.zhaw.ch/MI25a-PM1-HS25/MI25a-PM1-HS25-G3-P3>)
+4. git clone (https://github.zhaw.ch/MI25a-PM1-HS25/MI25a-PM1-HS25-G3-P3)
 5. cd src/
 6. python -m frontend.control_panel
 

@@ -6,14 +6,18 @@ Dieses Testkonzept beschreibt die systematische Prüfung der Spiel-Backend- und 
 Der Fokus liegt auf deterministischer, reproduzierbarer und automatisierter Validierung der spielrelevanten Kernfunktionalität – unabhängig von der grafischen Benutzeroberfläche.
 
 **Methodik:** Alle Tests werden mit **pytest** ausgeführt.  
+
 **Testtiefe:** Unit-Tests sichern jede Funktion ab.
 
 
 ##Frontend Tests
 
 Das Frontend-Testkonzept überprüft die korrekte Verwaltung von Support-Karten in der GUI unabhängig von der tatsächlichen Darstellung. Dabei werden alle GUI-Elemente und Bildoperationen durch Mocks ersetzt, sodass die isoliert getestet werden können. Ziel ist es sicherzustellen, dass Funktionalität der Kartenverwaltung im Frontend korrekt ist.
+
 **Methodik**: Alle Tests werden mit **pytest** ausgeführt.
+
 **Testtiefe**: Unit Tests mit Mocking.
+
 Alle GUI-Komponenten (CTk, CTkLabel, Frame, Image.open, ImageTk.PhotoImage) werden gemockt, damit die Tests headless und schnell laufen.
 
 - Fixtures:

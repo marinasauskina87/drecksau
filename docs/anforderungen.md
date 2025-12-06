@@ -5,8 +5,8 @@ Die Vision beschreibt ein über die Konsole gesteuertes, textbasiertes Spiel bas
 Das Programm soll über Ein- und Ausgabe in der Konsole vollständig steuerbar sein und folgende Funktionalitäten enthalten:
 
 - Ein textbasiertes Spiel für **2–4 Spieler** starten
-- Die **Karten jedes Spielers** anzeigen
-- Die **ausliegenden Karten auf dem Tisch** nach jedem Zug anzeigen
+- Die **Karten jedes Spielers in Textformat** anzeigen
+- Die **ausliegenden Karten** sollen nach jedem Zug für den Spieler in Form von Text ersichtlich sein
 - Das **Ziehen und Ausspielen von Karten** ermöglichen
 - Die **offiziellen Spielregeln vollständig umsetzen**
 - Die **Spielmechanik modular strukturieren** (Backend, Frontend, Logik)
@@ -30,3 +30,7 @@ Diese dienen als Grundlage für:
 - die Funktionsblöcke (Backend, Frontend, Logik),
 
 - sowie die spätere Implementierung und Testabdeckung.
+
+
+
+

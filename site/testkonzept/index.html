@@ -2129,13 +2129,13 @@
 <h2 id="backend-und-logiktests">Backend- und Logiktests</h2>
 <p>Dieses Testkonzept beschreibt die systematische Prüfung der Spiel-Backend- und Logikkomponenten des Spiels Drecksau, das in Python unter Verwendung von tkinter entwickelt wird.
 Der Fokus liegt auf deterministischer, reproduzierbarer und automatisierter Validierung der spielrelevanten Kernfunktionalität – unabhängig von der grafischen Benutzeroberfläche.</p>
-<p><strong>Methodik:</strong> Alle Tests werden mit <strong>pytest</strong> ausgeführt.<br />
-<strong>Testtiefe:</strong> Unit-Tests sichern jede Funktion ab.</p>
+<p><strong>Methodik:</strong> Alle Tests werden mit <strong>pytest</strong> ausgeführt.  </p>
+<p><strong>Testtiefe:</strong> Unit-Tests sichern jede Funktion ab.</p>
 <h2 id="frontend-tests">Frontend Tests</h2>
-<p>Das Frontend-Testkonzept überprüft die korrekte Verwaltung von Support-Karten in der GUI unabhängig von der tatsächlichen Darstellung. Dabei werden alle GUI-Elemente und Bildoperationen durch Mocks ersetzt, sodass die isoliert getestet werden können. Ziel ist es sicherzustellen, dass Funktionalität der Kartenverwaltung im Frontend korrekt ist.
-<strong>Methodik</strong>: Alle Tests werden mit <strong>pytest</strong> ausgeführt.
-<strong>Testtiefe</strong>: Unit Tests mit Mocking.
-Alle GUI-Komponenten (CTk, CTkLabel, Frame, Image.open, ImageTk.PhotoImage) werden gemockt, damit die Tests headless und schnell laufen.</p>
+<p>Das Frontend-Testkonzept überprüft die korrekte Verwaltung von Support-Karten in der GUI unabhängig von der tatsächlichen Darstellung. Dabei werden alle GUI-Elemente und Bildoperationen durch Mocks ersetzt, sodass die isoliert getestet werden können. Ziel ist es sicherzustellen, dass Funktionalität der Kartenverwaltung im Frontend korrekt ist.</p>
+<p><strong>Methodik</strong>: Alle Tests werden mit <strong>pytest</strong> ausgeführt.</p>
+<p><strong>Testtiefe</strong>: Unit Tests mit Mocking.</p>
+<p>Alle GUI-Komponenten (CTk, CTkLabel, Frame, Image.open, ImageTk.PhotoImage) werden gemockt, damit die Tests headless und schnell laufen.</p>
 <ul>
 <li>
 <p>Fixtures:</p>

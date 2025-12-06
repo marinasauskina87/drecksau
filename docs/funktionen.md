@@ -1,6 +1,6 @@
 # Funktionen
 
-##Entry Point
+##Alle Funktionen
 Hier sieht ihr eine Auflistung unserer Funktionen vom Code. Die Autoren und weitere Angaben bezüglich den Arbeitsablauf, befinden sich auf [Jira](https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary).
 
 ??? note "Backend"

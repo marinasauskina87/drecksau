@@ -1,25 +1,41 @@
 #Scrum Artefakte
 
 ##Reviewers
-Wir haben uns im Team darauf geeinigt, dass ein Pull Request immer mindestens zwei Approvals benötigt, bevor der jeweilige Pull Request gemergt werden kann. Dies haben wir mittels des Branch Rulesets realisiert.
+Wir haben uns im Team darauf geeinigt, dass ein Pull Request immer mindestens zwei Approvals benötigt, bevor der jeweilige Pull Request gemergt werden kann.
 
 ##Scrum-Protokolle
-Die Scrum Protokolle können unter diesem Link aufgerufen werden. Dort befindet sich die Definition of Done, sowie weitere Informationen bezüglich der organisatorischen Umsetzung von unserem Projekt.
+Die Scrum Protokolle können unter diesem Link aufgerufen werden. Dort befindet sich weitere Informationen bezüglich der organisatorischen Umsetzung von unserem Projekt.
 
 
 ##Planung
 Wir haben geplant zuerst alle geforderten Funktionen auf jeweilige Branches zu entwickeln und diese dann auf einen separaten Branch (developer) zu mergen. 
 Sobald das finale Produkt auf "developer" erreicht wird, wird alles auf den Hauptbranch "main" gemergt.
 
-Zudem haben wir vereinbart, dass der Code an sich (Variablennamen, etc.) auf Englisch sein soll, wobei die Kommentare der deutschen Sprache angegliedert werden sollen. 
 Die Variablen- und Funktionsnamen sollten zudem im Snake-Case geschrieben werden. (Weitere Clean-Coding-Punkte sind unten zu finden)
 
 Des Weiteren haben wir uns freiwillig entschieden ein GUI für unser Spiel zu verwenden, da es für eine bessere Spielübersicht sorgt und das Spielen an sich so mehr Spass macht.
 
 Zu guter Letzt haben wir vereinbart, dass (bis auf "developer") alle Branches die Namen der jeweiligen UserStory (falls vorhanden) tragen sollen.
 
+
+##Definition of Done
+Das ist unsere Definition of Done vom Projekt:
+
+- Alle in der Aufgabenstellung genannten Anforderungen wurden umgesetzt und überprüft
+
+- Die TestCases decken alle Akzeptanzkriterien ab, wurden automatisch mit PyTest ausgeführt und fehlerfrei bestanden
+
+- Sämtliche im Team formulierten Akzeptanzkriterien wurden erfüllt
+
+- Jegliche aktuellen Änderungen wurden dokumentiert
+
+- Der Product Owner hat das PBI abgesegnet
+
+- Der Code entspricht den Clean Code-Prinzipien
+
 ##Clean-Coding
 Bei diesem Projekt haben wir uns an die Clean-Coding-Richtlinien gehalten welche auf Moodle abgelegt wurden.
+Die Variabeln- und Funktionsnamen sind in Englisch geschrieben, passend zu den Spielkarten.
 [**Hier**](dokumente_/Clean_Code.pdf) befindet sich das Dokument, welches auf Moodle abgelegt ist.
 
 #Quellen
