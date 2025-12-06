@@ -4,7 +4,7 @@
 Wir haben uns im Team darauf geeinigt, dass ein Pull Request immer mindestens zwei Approvals benötigt, bevor der jeweilige Pull Request gemergt werden kann. Dies haben wir mittels des Branch Rulesets realisiert.
 
 ##Scrum-Protokolle
-Die Scrum Protokolle können unter diesem Link aufgerufen werden.
+Die Scrum Protokolle können unter diesem Link aufgerufen werden. Dort befindet sich die Definition of Done, sowie weitere Informationen bezüglich der organisatorischen Umsetzung von unserem Projekt.
 
 
 ##Planung
