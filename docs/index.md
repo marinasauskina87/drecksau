@@ -1,5 +1,11 @@
 # Willkommen zur Dokumentation vom Spiel "Dreckssau"
 ##Setup
+1. pip install customtkinter
+2. pip install tkinter
+3. pip install ctkmessagebox
+4. git clone <link>
+5. cd src/
+6. python -m frontend.control_panel
 
 
 ## Inhaltsverzeichnis
