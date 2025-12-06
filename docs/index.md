@@ -13,7 +13,7 @@
 
 
 ## Spielanleitung
-[**Hier**](dokumente_/Anleitung_Drecksau.pdf) befindet sich die Spielanleitung als PDF-DOkument.
+[**Hier**](dokumente_/Anleitung_Drecksau.pdf) befindet sich die Spielanleitung als PDF-Dokument.
 
 
 
