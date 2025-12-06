@@ -20,7 +20,7 @@ Im Projekt 3 soll das Kartenspiel "Drecksau" entwickelt werden, welche folgende 
 5. cd src/
 6. python -m frontend.control_panel
 
-[**Spielanleitung**](dokumente_/Anleitung_Drecksau.pdf)
+[**Spielanleitung**](docs/dokumente_/Anleitung_Drecksau.pdf)
 
 [**Dokumentation**](https://github.zhaw.ch/pages/MI25a-PM1-HS25/MI25a-PM1-HS25-G3-P3/)
 
