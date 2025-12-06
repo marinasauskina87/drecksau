@@ -22,6 +22,7 @@ Das Programm soll über Ein- und Ausgabe in der Konsole vollständig steuerbar s
 Die User Stories und die Akzeptanzkriterien können im [Jira-Board](https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary) eingesehen werden.
 
 Diese dienen als Grundlage für:
+
 - die Aufgabenteilung im Team,
 
 - die Sprintplanung,
