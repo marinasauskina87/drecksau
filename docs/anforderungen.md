@@ -23,6 +23,9 @@ Die User Stories und die Akzeptanzkriterien können im [Jira-Board](https://mi25
 
 Diese dienen als Grundlage für:
 - die Aufgabenteilung im Team,
+
 - die Sprintplanung,
+
 - die Funktionsblöcke (Backend, Frontend, Logik),
+
 - sowie die spätere Implementierung und Testabdeckung.
