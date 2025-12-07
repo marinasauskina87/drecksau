@@ -35,7 +35,7 @@ Fast alle Funktionen greifen direkt auf globale GUI-Objekte zu.
 Globale Variablen wie current_player und Spieler-Dictionaries erschweren die Isolation der Logik.
 
 ###Testprotokoll
-[**Hier**](dokumente_/Test_Protokoll.pdf) befindet sich das PDF vom **Testprotokoll**. Darunter sieht ihr Bilder zuden Test-Resultaten.
+[**Hier**](dokumente_/Test_Protokoll_.pdf) befindet sich das PDF vom **Testprotokoll**. Darunter sieht ihr Bilder zuden Test-Resultaten.
 
 ##Test-Resultate:
 ![Bild_Test](assets/Bild_Test_1.png){ width="310" }
