@@ -9,7 +9,6 @@ Das Programm soll über Ein- und Ausgabe in der Konsole vollständig steuerbar s
 - Die **ausliegenden Karten** sollen nach jedem Zug für den Spieler in Form von Text ersichtlich sein
 - Das **Ziehen und Ausspielen von Karten** ermöglichen
 - Die **offiziellen Spielregeln vollständig umsetzen**
-- Die **Spielmechanik modular strukturieren** (Backend, Frontend, Logik)
 - Eine **selbst gewählte Spielerweiterung** implementieren  
   (z. B. neue Aktionskarte, alternative Kartenwirkungen, zusätzliche Regeln)
 - Ungültige Eingaben, Zugfehler oder Spielregelverletzungen sollen professionell behandelt werden

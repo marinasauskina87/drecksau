@@ -49,3 +49,14 @@ Da CustomTkinter nicht beim Start sofort erkennt, wie gross der Fullscreen ist u
 
 ##Ausblick
 Als Ausblick bleibt festzuhalten, dass wir als Gruppe die Blitz-Variante von Drecksau gerne noch implementiert und weiterentwickelt hätten, wenn uns mehr Zeit zur Verfügung gestanden wäre.
+
+
+##Quellen
+
+[Tkinter](https://docs.python.org/3/library/tkinter.html)
+
+[CustomTkinter](https://customtkinter.tomschimansky.com/)
+
+[ctkmessagebox](https://coderslegacy.com/python/customtkinter-messagebox-using-ctkmessagebox/)
+
+[pytest](https://docs.pytest.org/en/stable/)
