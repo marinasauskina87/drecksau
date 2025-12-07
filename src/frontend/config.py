@@ -13,6 +13,15 @@ card_deck = [["Matschkarte", 21], #21
              ["Bauer-ärgere-dich-Karte", 4], #4
              ["Tornadokarte", 2]] #2
 
+preset_card_deck = [["Matschkarte", 21], #21
+                    ["Regenkarte", 4], #4
+                    ["Stallkarte", 9], #9
+                    ["Blitzkarte", 4], #4
+                    ["Blitzableiterkarte", 4], #4
+                    ["Bauer-schrubbt-die-Sau-Karte", 8], #8
+                    ["Bauer-ärgere-dich-Karte", 4], #4
+                    ["Tornadokarte", 2]] #2
+
 played_cards = []
 
 amount_of_players = 4

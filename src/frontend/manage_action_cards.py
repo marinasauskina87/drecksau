@@ -33,7 +33,7 @@ def choose_random_card():
                 current_card_deck.remove(card_type)
             # If the card-deck is empty -> refill it
             if current_card_deck == []:
-                current_card_deck.append(config.card_deck)
+                config.card_deck = config.preset_card_deck[:]
             return card_type
     return -1
 
