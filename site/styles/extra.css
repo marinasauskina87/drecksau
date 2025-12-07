@@ -1,0 +1,179 @@
+/* ----------------------------------------------------- */
+/* Minimalistisches Drecksau Theme – klar & spielbezogen */
+/* ----------------------------------------------------- */
+
+/* ------------------- Farbpalette (Kosmos Drecksau) ------------------- */
+:root {
+    --drecksau-pink:  #F48FB1;  /* Schweinchen */
+    --drecksau-brown: #6D4C41;  /* Matsch */
+    --drecksau-green: #8BC34A;  /* Wiese */
+    --drecksau-orange:#FF9800;  /* Logo */
+    --drecksau-blue:  #4AA3DF;  /* Himmel */
+
+    --neutral-bg:     #FAF7F1;  /* sanftes Beige */
+    --neutral-bg2:    #F4EEE6;
+    --neutral-border: #D7CEC4;
+    --neutral-text:   #2F2A26;
+
+    --code-bg:        #F1E9DF;  /* dezentes beige */
+}
+
+/* ------------------- Globales Layout ------------------- */
+
+.md-main__inner {
+    background: var(--neutral-bg);
+}
+
+.md-grid {
+    max-width: 1100px;
+}
+
+/* ------------------- Typografie ------------------- */
+
+body, .md-typeset {
+    color: var(--neutral-text);
+    font-family: "Inter", sans-serif;
+    line-height: 1.55;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--drecksau-brown);
+    font-weight: 600;
+}
+
+/* ------------------- Header & Tabs ------------------- */
+
+.md-header {
+    background: var(--drecksau-blue);
+}
+
+.md-tabs {
+    background: var(--drecksau-blue);
+}
+
+.md-tabs__link,
+.md-header__title {
+    color: white;
+}
+
+/* ------------------- Links ------------------- */
+
+a {
+    color: var(--drecksau-orange);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------- Buttons ------------------- */
+
+.md-button {
+    background: var(--drecksau-green);
+    color: white !important;
+    border-radius: 4px;
+}
+
+.md-button:hover {
+    background: #75A83E;
+}
+
+/* ------------------- Admonitions ------------------- */
+
+.admonition {
+    border-radius: 4px;
+    border-left-width: 4px;
+}
+
+.admonition.note     { border-color: var(--drecksau-blue); }
+.admonition.info     { border-color: var(--drecksau-blue); }
+.admonition.warning  { border-color: var(--drecksau-orange); }
+.admonition.danger   { border-color: var(--drecksau-brown); }
+.admonition.success  { border-color: var(--drecksau-green); }
+
+/* ------------------- Code minimal & passend ------------------- */
+
+.md-typeset code {
+    background: var(--code-bg);
+    color: var(--neutral-text);
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+
+/* Mehrzeilige Blöcke */
+.md-typeset pre > code {
+    background: var(--code-bg);
+    border: 1px solid var(--neutral-border);
+    border-radius: 4px;
+    padding: 1em;
+}
+
+.md-typeset pre {
+    background: none !important;
+}
+
+/* ------------------- mkdocstrings – klar & spielbezogen ------------------- */
+
+.doc-object {
+    margin-bottom: 2em;
+    padding: 1.2em 1.2em;
+    border: 1px solid var(--neutral-border);
+    border-radius: 6px;
+    background: var(--neutral-bg2);
+}
+
+/* Funktionsüberschriften */
+.doc-object h3,
+.doc-object h4 {
+    border-bottom: 2px solid var(--neutral-border);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    color: var(--drecksau-brown);
+}
+
+/* Funktions-Signaturen */
+.doc-signature {
+    background: #FFF7EB; /* sanftes Orange-Beige passend zum Spiel */
+    padding: 0.6em 1em;
+    border-radius: 4px;
+    font-family: monospace;
+    border-left: 4px solid var(--drecksau-orange);
+    margin-bottom: 1em;
+}
+
+/* Parameter-Tabellen */
+.doc-contents table {
+    border: 1px solid var(--neutral-border);
+    border-radius: 4px;
+}
+
+.doc-contents table th {
+    background: var(--neutral-bg2);
+}
+
+.doc-contents table td {
+    background: white;
+}
+
+/* leichte Einrückung */
+.doc-contents {
+    margin-left: 0.3em;
+}
+
+/* Module gut getrennt */
+.doc-module {
+    border-top: 3px solid var(--drecksau-green);
+    padding-top: 1.5em;
+    margin-top: 3em;
+}
+
+/* Parameter */
+.md-typeset dt {
+    font-weight: 600;
+    color: var(--drecksau-brown);
+}
+
+.md-typeset dd {
+    margin-bottom: 10px;
+}

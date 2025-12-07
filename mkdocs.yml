@@ -1,0 +1,70 @@
+site_name: Projekt 3 "Dreckssau"
+
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+  palette:
+
+    primary: custom
+    accent: custom
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+
+  icon:
+    admonition:
+      note: octicons/pencil-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/light-bulb-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
+extra_css:
+  - styles/extra.css
+
+  - https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src
+          options:
+            docstring_style: google
+            show_signature: true
+            show_signature_annotations: true
+            show_source: true
+            show_root_toc_entry: false
+            show_submodules: true
+            members: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - attr_list
+
+nav:
+  - Start: index.md
+  - Anforderungen: anforderungen.md
+  - Organisatorische Umsetzung: oru.md
+  - Technische Umsetzung: teu.md
+  - Funktionen: funktionen.md
+  - Testkonzept: testkonzept.md
+  - Lessons Learned: lessonslearned.md
+  - "Jira-Board": "https://mi25pm1t3.atlassian.net/jira/software/projects/DREC/summary"
