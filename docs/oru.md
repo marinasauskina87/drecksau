@@ -4,7 +4,7 @@
 Wir haben uns im Team darauf geeinigt, dass ein Pull Request immer mindestens zwei Approvals benötigt, bevor der jeweilige Pull Request gemergt werden kann.
 
 ##Scrum-Protokolle
-Die Scrum Protokolle können unter diesem [Link](dokumente_/Scrum_Protokoll.pdf) als PDF aufgerufen werden. Dort befindet sich weitere Informationen bezüglich der organisatorischen Umsetzung von unserem Projekt.
+Die Scrum Protokolle können unter diesem [**Link**](dokumente_/Scrum_Protokoll.pdf) als PDF aufgerufen werden. Dort befindet sich weitere Informationen bezüglich der organisatorischen Umsetzung von unserem Projekt.
 
 
 ##Planung
